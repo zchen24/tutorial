@@ -1,0 +1,16 @@
+
+# general
+*~ 
+
+# ros related
+*/lib/*
+*/build/*
+*/msg_gen/*
+*/srv_gen/*
+*/bin/*
+*~
+
+qtcreator-build-*
+CMakeLists.txt.user
+cisstLog.txt
+.ropeproject
