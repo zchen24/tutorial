@@ -7,9 +7,13 @@
 #include <byteswap.h>
 #include <libraw1394/raw1394.h>
 #include <bitset>
+#include <string.h>
+#include <stdint.h>
 
 // Declare handle here
 raw1394handle_t handle;
+const int maxBufferSize = 100;  // max 100 quadlets
+quadlet_t readBuffer[maxBufferSize];
 
 
 /* signal handler cleans up and exits the program */
@@ -18,7 +22,6 @@ void signal_handler(int sig) {
     raw1394_destroy_handle(handle);
     exit(0);
 }
-
 
 /* bus reset handler updates the bus generation */
 int reset_handler(raw1394handle_t hdl, unsigned int gen) {
@@ -30,14 +33,42 @@ int reset_handler(raw1394handle_t hdl, unsigned int gen) {
     return 0;
 }
 
+// tag handler
+int my_tag_handler(raw1394handle_t handle, unsigned long tag,
+                raw1394_errcode_t errcode)
+{
+    int err = raw1394_errcode_to_errno(errcode);
+    if (err) {
+        std::cerr << "failed with error: " << strerror(err) << std::endl;
+    } else {
+        std::cout << "completed customized tag handler = " << bswap_32(readBuffer[0]) << std::endl;
+    }
+}
+
+
 // asynchronous read/write handler
 int arm_handler(raw1394handle_t handle, unsigned long arm_tag,
                 byte_t request_type, unsigned int requested_length,
                 void *data)
 {
 
-    std::cout << "called " << std::endl;
+    std::cout << "arm_handler called " << std::endl
+              << "req len = " << requested_length << " type = " << request_type << std::endl;
 }
+
+
+
+// arm tag callback
+int my_arm_req_callback(raw1394handle_t handle,
+                        struct raw1394_arm_request_response *arm_req_resp,
+                        unsigned int requested_length,
+                        void *pcontext, byte_t request_type)
+{
+    std::cout << "arm_req_callback, type = " << std::dec << (int)request_type << std::endl;
+//    std::cout << ""
+}
+
+
 
 int main(int argc, char** argv)
 {
@@ -56,7 +87,7 @@ int main(int argc, char** argv)
     // set the bus reset handler
     raw1394_set_bus_reset_handler(handle, reset_handler);
     // set the bus arm_tag handler
-    raw1394_set_arm_tag_handler(handle, arm_handler);
+//    raw1394_set_arm_tag_handler(handle, arm_handler);
 
 
     // get port info & save to portinfo
@@ -128,6 +159,35 @@ int main(int argc, char** argv)
 
     // block read
 
+    // --------------------------------------------
+    // ------------- ARM Handling -----------------
+    const int maxArmBufferSize = 300;
+    uint8_t armBuffer[maxArmBufferSize];
+    size_t armSize = 10;
+    int mode = RAW1394_ARM_WRITE | RAW1394_ARM_READ;
+    byte_t configROM[4] = {0x01, 0x04, 0x02, 0x09};
+    raw1394_arm_reqhandle reqHandle;
+
+    char my_arm_callback_context[] = "my_arm_callback_context";
+
+
+    reqHandle.arm_callback = my_arm_req_callback;
+    reqHandle.pcontext = my_arm_callback_context;
+
+    // regitster arm to handle request for CSR_CONFIG_ROM
+    rc = raw1394_arm_register(handle, 0, 4, configROM,
+                              (unsigned long) &reqHandle, mode, mode, mode);
+
+    // get memory
+    rc = raw1394_arm_get_buf(handle, 0, 4, armBuffer);
+    if (rc) {
+        std::cerr << "arm get buf: " << strerror(errno) << std::endl;
+    } else {
+        for (size_t i = 0; i < 4; i++) {
+            std::cout << "arm buf " << std::dec << i << " = "
+                      << std::hex << bswap_32(armBuffer[i]) << std::endl;
+        }
+    }
 
 
 
