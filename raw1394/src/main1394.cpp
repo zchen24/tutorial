@@ -5,10 +5,13 @@
 #include <iostream>
 #include <stdio.h>
 #include <byteswap.h>
-#include <libraw1394/raw1394.h>
 #include <bitset>
 #include <string.h>
 #include <stdint.h>
+#include <arpa/inet.h> // htonl
+
+#include <libraw1394/raw1394.h>
+#include <libraw1394/raw1394_private.h>
 
 // Declare handle here
 raw1394handle_t handle;
@@ -65,7 +68,40 @@ int my_arm_req_callback(raw1394handle_t handle,
                         void *pcontext, byte_t request_type)
 {
     std::cout << "arm_req_callback, type = " << std::dec << (int)request_type << std::endl;
-//    std::cout << ""
+    // RAW1394_ARM_READ = 1,  WRITE = 2, LOCK = 4
+    raw1394_arm_request *req = arm_req_resp->request;
+    std::cout << "tcode: " << (int)req->tcode
+              << "  tlabel: " << (int)req->tlabel
+              << "  ext_tcode: " << (int)req->extended_transaction_code << std::endl;
+
+//    raw1394_arm_response *resp = arm_req_resp->response;
+//    resp->response_code =
+
+    quadlet_t value = 0x5432;
+
+    quadlet_t *resp_quad_read = new quadlet_t[4];
+    resp_quad_read[0] =
+            ((req->source_nodeid & 0xffff) << 16) +
+            ((req->tlabel & 0x3f) << 10) +
+            (6 << 4);  // tcode = 6: read response
+    resp_quad_read[1] =
+            ((req->destination_nodeid & 0xffff) << 16) +
+            ((0 & 0xf) << 12);  // rcode = 0 = reap_complete
+//    resp_quad_read[2] reserved
+    resp_quad_read[3] = htonl(value);
+
+    raw1394_arm_get_buf(handle, 0, 4, readBuffer);
+    std::cout << "Address 0x0 has been written value = " << std::hex << bswap_32(readBuffer[0]) << std::endl;
+
+    // send it out
+    int rc = 0;
+    rc = raw1394_start_async_send(handle, 16, 16, 0, resp_quad_read, 0);
+    if (rc) {
+        std::cerr << "**** Error: async_send, " << strerror(errno) << std::endl;
+    }
+
+    delete resp_quad_read;
+    return 0;
 }
 
 
@@ -83,6 +119,8 @@ int main(int argc, char** argv)
         std::cerr << "**** Error: could not open 1394 handle" << std::endl;
         return -1;
     }
+
+    std::cout << "handle is_fw = " << handle->is_fw << std::endl;
 
     // set the bus reset handler
     raw1394_set_bus_reset_handler(handle, reset_handler);
@@ -176,7 +214,7 @@ int main(int argc, char** argv)
 
     // regitster arm to handle request for CSR_CONFIG_ROM
     rc = raw1394_arm_register(handle, 0, 4, configROM,
-                              (unsigned long) &reqHandle, mode, mode, mode);
+                              (unsigned long) &reqHandle, mode, mode, 0);
 
     // get memory
     rc = raw1394_arm_get_buf(handle, 0, 4, armBuffer);
@@ -203,7 +241,6 @@ int main(int argc, char** argv)
 
     return 0;
 }
-
 
 
 
