@@ -1,4 +1,5 @@
 
+// system
 #include <errno.h>
 #include <signal.h>
 #include <stdlib.h>
@@ -10,8 +11,9 @@
 #include <stdint.h>
 #include <arpa/inet.h> // htonl
 
+// libraw1394
 #include <libraw1394/raw1394.h>
-#include <libraw1394/raw1394_private.h>
+#include <libraw1394/csr.h>
 
 // Declare handle here
 raw1394handle_t handle;
@@ -54,7 +56,6 @@ int arm_handler(raw1394handle_t handle, unsigned long arm_tag,
                 byte_t request_type, unsigned int requested_length,
                 void *data)
 {
-
     std::cout << "arm_handler called " << std::endl
               << "req len = " << requested_length << " type = " << request_type << std::endl;
 }
@@ -72,10 +73,9 @@ int my_arm_req_callback(raw1394handle_t handle,
     raw1394_arm_request *req = arm_req_resp->request;
     std::cout << "tcode: " << (int)req->tcode
               << "  tlabel: " << (int)req->tlabel
-              << "  ext_tcode: " << (int)req->extended_transaction_code << std::endl;
-
-//    raw1394_arm_response *resp = arm_req_resp->response;
-//    resp->response_code =
+              << "  destid: 0x" << std::hex << req->destination_nodeid
+              << "  sourid: 0x" << std::hex << req->source_nodeid
+              << "  ext_tcode: " << std::dec << (int)req->extended_transaction_code << std::endl;
 
     quadlet_t value = 0x5432;
 
@@ -93,12 +93,8 @@ int my_arm_req_callback(raw1394handle_t handle,
     raw1394_arm_get_buf(handle, 0, 4, readBuffer);
     std::cout << "Address 0x0 has been written value = " << std::hex << bswap_32(readBuffer[0]) << std::endl;
 
-    // send it out
-    int rc = 0;
-    rc = raw1394_start_async_send(handle, 16, 16, 0, resp_quad_read, 0);
-    if (rc) {
-        std::cerr << "**** Error: async_send, " << strerror(errno) << std::endl;
-    }
+    raw1394_arm_get_buf(handle, CSR_REGISTER_BASE + 0x4000, 4, readBuffer);
+    std::cout << "Address broadcast has been written value = " << std::hex << bswap_32(readBuffer[0]) << std::endl << std::endl;
 
     delete resp_quad_read;
     return 0;
@@ -120,11 +116,11 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    std::cout << "handle is_fw = " << handle->is_fw << std::endl;
-
     // set the bus reset handler
     raw1394_set_bus_reset_handler(handle, reset_handler);
+
     // set the bus arm_tag handler
+    // this will override the arm_tag_handler
 //    raw1394_set_arm_tag_handler(handle, arm_handler);
 
 
@@ -195,8 +191,6 @@ int main(int argc, char** argv)
         std::cout << "quadlet read = " << std::hex << bswap_32(readBuffer[i]) << std::endl;
     }
 
-    // block read
-
     // --------------------------------------------
     // ------------- ARM Handling -----------------
     const int maxArmBufferSize = 300;
@@ -212,9 +206,17 @@ int main(int argc, char** argv)
     reqHandle.arm_callback = my_arm_req_callback;
     reqHandle.pcontext = my_arm_callback_context;
 
-    // regitster arm to handle request for CSR_CONFIG_ROM
+    // regitster arm to handle request for address 0x00
     rc = raw1394_arm_register(handle, 0, 4, configROM,
                               (unsigned long) &reqHandle, mode, mode, 0);
+
+    // register arm handler for broadcast
+    rc = raw1394_arm_register(handle, CSR_REGISTER_BASE + 0x4000, 4, configROM,
+                              (unsigned long) &reqHandle, mode, mode, 0);
+    if (rc) {
+        std::cerr << "arm register: " << strerror(errno) << std::endl;
+    }
+
 
     // get memory
     rc = raw1394_arm_get_buf(handle, 0, 4, armBuffer);
@@ -228,13 +230,7 @@ int main(int argc, char** argv)
     }
 
 
-
-
-//    // ------ Test bswap_32 ---------
-//    quadlet_t value = 0x40880f00;
-//    std::cout << std::hex << "value = " << value << std::endl
-//              << "bswap(value) = " << bswap_32(value) << std::endl;
-
+    // loop iterate to pull events
     while (1) {
         raw1394_loop_iterate(handle);
     }
