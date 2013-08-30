@@ -209,12 +209,15 @@ int main(int argc, char** argv)
     // regitster arm to handle request for address 0x00
     rc = raw1394_arm_register(handle, 0, 4, configROM,
                               (unsigned long) &reqHandle, mode, mode, 0);
+    if (rc) {
+        std::cerr << "addr = 0x00 arm register: " << strerror(errno) << std::endl;
+    }
 
     // register arm handler for broadcast
     rc = raw1394_arm_register(handle, CSR_REGISTER_BASE + 0x4000, 4, configROM,
                               (unsigned long) &reqHandle, mode, mode, 0);
     if (rc) {
-        std::cerr << "arm register: " << strerror(errno) << std::endl;
+        std::cerr << "addr = csr arm register: " << strerror(errno) << std::endl;
     }
 
 

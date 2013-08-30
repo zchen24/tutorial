@@ -4,7 +4,7 @@
 
 # ros related
 */lib/*
-*/build/*
+build
 */msg_gen/*
 */srv_gen/*
 */bin/*
