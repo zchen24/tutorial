@@ -4,6 +4,7 @@ project(tuturial)
 
 add_subdirectory(raw1394)
 add_subdirectory(stdlib)
-add_subdirectory(json)
+#add_subdirectory(json)
 add_subdirectory(opencv)
+add_subdirectory(kdl)
 
