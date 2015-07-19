@@ -1,0 +1,31 @@
+#+TITLE: Unit Testing Notes with Python
+
+* What is Testing? 
++ Testing: writing code that invodes code under test to determine if there are
+  any errors. 
++ It does NOT prove that code is correct, only the developer thought is correct
++ Errors that can be detected:
+  + syntax error
+  + Logic error
++ Unit: a single unit of code *in isolation*
+  + a module
+  + a single class / function
+  + anything in between
+
+* Why Testing? 
++ Make sure code works properly under a given set of conditions
++ Allows one to ensore that code changes did not break existing functionality
++ Force one to think about unusual conditions
++ Requirs modular, decoupled code 
+
+* Testing Tips: 
++ Each test should test a single, specific property of the code and be named
+  accordingly. 
+
+* Going Forward
++ Test case organization
++ Continuous integration
++ Test case management 
+
+* Reference
++ [[https://www.jeffknupp.com/blog/2013/12/09/improve-your-python-understanding-unit-testing/][Improve Your Python: Understanding Unit Testing]]
