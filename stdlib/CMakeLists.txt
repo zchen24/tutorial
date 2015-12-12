@@ -11,3 +11,6 @@ add_executable(getopt_test getopt_test.cpp)
 
 # getopt_long example
 add_executable(getopt_long_test getopt_long_test.cpp)
+
+# string example
+add_executable(string_test string_test.cpp)
