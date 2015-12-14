@@ -5,6 +5,9 @@ project(opencv_tutorial)
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+add_executable(cvCamera src/Camera.cpp)
+target_link_libraries(cvCamera ${OpenCV_LIBRARIES})
+
 add_executable(cvKernel src/Kernel.cpp)
 target_link_libraries(cvKernel ${OpenCV_LIBRARIES})
 
@@ -17,7 +20,54 @@ target_link_libraries(cvContrast ${OpenCV_LIBRARIES})
 add_executable(cvDrawing src/Drawing.cpp)
 target_link_libraries(cvDrawing ${OpenCV_LIBRARIES})
 
-# file(COPY imgs DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink
-                ${CMAKE_CURRENT_SOURCE_DIR}/imgs
-                ${CMAKE_CURRENT_BINARY_DIR})
+add_executable(cvDFT src/DFT.cpp)
+target_link_libraries(cvDFT ${OpenCV_LIBRARIES})
+
+add_executable(cvSmoothing src/Smoothing.cpp)
+target_link_libraries(cvSmoothing ${OpenCV_LIBRARIES})
+
+add_executable(cvEroding src/Eroding.cpp)
+target_link_libraries(cvEroding ${OpenCV_LIBRARIES})
+
+
+# image processing
+add_executable(cvMorphology imgproc/Morphology.cpp)
+target_link_libraries(cvMorphology ${OpenCV_LIBRARIES})
+
+add_executable(cvBoarder imgproc/Boarder.cpp)
+target_link_libraries(cvBoarder ${OpenCV_LIBRARIES})
+
+add_executable(cvPyramid imgproc/Pyramid.cpp)
+target_link_libraries(cvPyramid ${OpenCV_LIBRARIES})
+
+add_executable(cvSobel imgproc/Sobel.cpp)
+target_link_libraries(cvSobel ${OpenCV_LIBRARIES})
+
+add_executable(cvLaplace imgproc/Laplace.cpp)
+target_link_libraries(cvLaplace ${OpenCV_LIBRARIES})
+
+add_executable(cvCanny imgproc/CannyDetector.cpp)
+target_link_libraries(cvCanny ${OpenCV_LIBRARIES})
+
+add_executable(cvHoughLines imgproc/Houghlines.cpp)
+target_link_libraries(cvHoughLines ${OpenCV_LIBRARIES})
+
+add_executable(cvHoughCircles imgproc/Houghcircles.cpp)
+target_link_libraries(cvHoughCircles ${OpenCV_LIBRARIES})
+
+add_executable(cvEqualize imgproc/EqualizeHist.cpp)
+target_link_libraries(cvEqualize ${OpenCV_LIBRARIES})
+
+add_executable(cvBackProject imgproc/CalcBackProject.cpp)
+target_link_libraries(cvBackProject ${OpenCV_LIBRARIES})
+
+add_executable(cvCamshiftdemo imgproc/Camshiftdemo.cpp)
+target_link_libraries(cvCamshiftdemo ${OpenCV_LIBRARIES})
+
+add_executable(cvMatchTemplate imgproc/MatchTemplate.cpp)
+target_link_libraries(cvMatchTemplate ${OpenCV_LIBRARIES})
+
+add_executable(cvContours imgproc/Contours.cpp)
+target_link_libraries(cvContours ${OpenCV_LIBRARIES})
+
+file(COPY imgs DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
