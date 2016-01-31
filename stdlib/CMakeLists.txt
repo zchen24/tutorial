@@ -17,3 +17,6 @@ add_executable(string_test string_test.cpp)
 
 # std::pair example
 add_executable(pair_test pair_test.cpp)
+
+# std::cout example
+add_executable(cout_test cout_test.cpp)
