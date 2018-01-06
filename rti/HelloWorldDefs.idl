@@ -1,0 +1,5 @@
+struct HelloWorldIdl {
+     string<64>             prefix;
+     long                   sampleId;
+     sequence<octet, 8192>  payload;
+};
