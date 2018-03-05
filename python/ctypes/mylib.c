@@ -1,4 +1,8 @@
+// On Windows:
 // use cmake to compile
+//
+// On Linux:
+// gcc -o mylib.so -shared -fPIC mylib.c
 
 #ifdef _WIN32
 #define WINAPI _declspec(dllexport)
