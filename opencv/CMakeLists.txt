@@ -29,6 +29,8 @@ target_link_libraries(cvSmoothing ${OpenCV_LIBRARIES})
 add_executable(cvEroding src/Eroding.cpp)
 target_link_libraries(cvEroding ${OpenCV_LIBRARIES})
 
+add_executable(cvImage src/Image.cpp)
+target_link_libraries(cvImage ${OpenCV_LIBRARIES})
 
 # image processing
 add_executable(cvMorphology imgproc/Morphology.cpp)
@@ -48,6 +50,9 @@ target_link_libraries(cvLaplace ${OpenCV_LIBRARIES})
 
 add_executable(cvCanny imgproc/CannyDetector.cpp)
 target_link_libraries(cvCanny ${OpenCV_LIBRARIES})
+
+add_executable(cvColorSpace imgproc/ColorSpace.cpp)
+target_link_libraries(cvColorSpace ${OpenCV_LIBRARIES})
 
 add_executable(cvHoughLines imgproc/Houghlines.cpp)
 target_link_libraries(cvHoughLines ${OpenCV_LIBRARIES})
