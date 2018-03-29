@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import socket
 
 UDP_IP = "127.0.0.1"
@@ -11,4 +12,5 @@ sock.bind((UDP_IP, UDP_PORT))
 
 while True:
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-    print "received message:", data
+    print("received message:", data)
+    print("packet from: ", addr)
