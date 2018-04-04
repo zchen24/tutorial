@@ -1,4 +1,17 @@
 #!/usr/bin/env python
+""" TCP Example
+Example:
+    # start server
+    $ tcp_example.py -s
+    > received data: hello
+
+    # start client
+    $ tcp_example.py -c hello
+    > Sent    : hello
+    > Received: hello
+"""
+
+
 
 from __future__ import print_function
 import socket
@@ -43,12 +56,6 @@ def tcp_server():
 
 
 if __name__ == '__main__':
-    """ TCP Example     
-    Example: 
-        tcp_example.py -s
-        tcp_example.py -c message    
-    """
-
     parser = argparse.ArgumentParser(description='TCP socket example')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-s', '--server', action='store_true',
