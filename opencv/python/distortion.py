@@ -9,6 +9,42 @@ import cv2
 import numpy as np
 
 
+def manual_image_undistortion(img, camera_matrix, dist_coefficient):
+    """ Manual Image Distortion
+
+    :param img: grayscale image
+    :param camera_matrix: 3x3 camera matrix
+    :param dist_coefficient: 4x1 or 5x1 distortion coefficient
+    :return: undistorted image
+    """
+    width = img.shape[1]
+    height = img.shape[0]
+
+    k1 = dist_coefficient[0]
+    k2 = dist_coefficient[1]
+
+    cx = camera_matrix[0, 2]
+    cy = camera_matrix[1, 2]
+    fx = camera_matrix[0, 0]
+    fy = camera_matrix[1, 1]
+
+    # create an image with same size
+    uimg = np.zeros((height, width, 1), np.uint8)
+
+    for w in range(width):
+        for h in range(height):
+            rx = (w - cx)/fx
+            ry = (h - cy)/fy
+            r = np.sqrt(pow(rx, 2) + pow(ry, 2))
+            scale = 1 + k1 * pow(r, 2) + k2 * pow(r, 4)
+            xu = int((w-cx)*scale + cx)
+            yu = int((h-cy)*scale + cy)
+            if (0 <= xu < width) & (0 <= yu < height):
+                # uimg[yu, xu] = img[h, w]
+                uimg[h, w] = img[yu, xu]
+    return uimg
+
+
 # np array
 img = cv2.imread('./data/board.png', cv2.IMREAD_GRAYSCALE)
 width = img.shape[1]
@@ -67,10 +103,19 @@ img_undistorted_roi = img_undistorted[y_min:y_max, x_min:x_max]
 # resize the cropped image to the original size
 img_undistorted_resized = cv2.resize(img_undistorted_roi, (800, 600))
 
+
+
+# ----- Manual ------
+# Call the manual implementation
+img_undistorted_manual = manual_image_undistortion(img, cam_matrix, dist_coef)
+
+
 # -------------------
 # Display images
 # -------------------
 cv2.imshow('img', img)
-cv2.imshow('undistorted', img_undistorted_resized)
+cv2.imshow('undistorted', img_undistorted)
+cv2.imshow('manual', img_undistorted_manual)
+
 cv2.waitKey(0)
 
