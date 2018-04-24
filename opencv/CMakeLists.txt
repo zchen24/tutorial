@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 
+set(CMAKE_CXX_STANDARD 11)
+
 project(opencv_tutorial)
 
 find_package(OpenCV)
@@ -74,5 +76,14 @@ target_link_libraries(cvMatchTemplate ${OpenCV_LIBRARIES})
 
 add_executable(cvContours imgproc/Contours.cpp)
 target_link_libraries(cvContours ${OpenCV_LIBRARIES})
+
+# ===========================
+# Highgui
+# ===========================
+add_executable(cvCallback gui/cvCallback.cpp)
+target_link_libraries(cvCallback ${OpenCV_LIBRARIES})
+
+add_executable(cvNamedWindow gui/cvNamedWindow.cpp)
+target_link_libraries(cvNamedWindow ${OpenCV_LIBRARIES})
 
 file(COPY imgs DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
