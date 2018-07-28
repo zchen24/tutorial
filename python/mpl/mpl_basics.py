@@ -37,11 +37,9 @@ fig.suptitle('Sup title')
 ax1.set_title('Ax1 title sine')
 ax2.set_title('Ax2 title cosine')
 
-# set label
-ax1.set_xlabel('x data')
+# set labels
+# ax1.set_xlabel('x data')
 ax1.set_ylabel('y data sin(x)')
-
-# set limits
 ax2.set_xlabel('x data')
 ax2.set_ylabel('y data cos(x)')
 
@@ -50,13 +48,21 @@ ax2.set_xticks(range(0, 11))
 
 # set legend
 # see legend documentation for details
-ax1.legend(['sin', 'sin * 0.5'], loc='upper center')
+# loc: strings
+#     - 'best'
+#     - 'upper right'
+#     - 'center'
+ax1.legend(['sin', 'sin * 0.5'], loc='best')
 
 # set grid
 ax1.grid(True)
 ax2.grid(True)
 
+# save figure
+#   bbox_inches='tight' removes whitespaces around figure
+plt.savefig('mpl_basics.jpg', bbox_inches='tight')
 plt.show()
 
-
+# close figure
+plt.close('all')
 
