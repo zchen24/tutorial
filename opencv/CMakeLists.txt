@@ -7,6 +7,8 @@ project(opencv_tutorial)
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+find_package(Qt5Widgets)
+
 add_executable(cvCamera src/Camera.cpp)
 target_link_libraries(cvCamera ${OpenCV_LIBRARIES})
 
@@ -33,6 +35,9 @@ target_link_libraries(cvEroding ${OpenCV_LIBRARIES})
 
 add_executable(cvImage src/Image.cpp)
 target_link_libraries(cvImage ${OpenCV_LIBRARIES})
+
+add_executable(cvDetectMotion src/DetectMotion.cpp)
+target_link_libraries(cvDetectMotion ${OpenCV_LIBRARIES})
 
 # image processing
 add_executable(cvMorphology imgproc/Morphology.cpp)
@@ -85,5 +90,15 @@ target_link_libraries(cvCallback ${OpenCV_LIBRARIES})
 
 add_executable(cvNamedWindow gui/cvNamedWindow.cpp)
 target_link_libraries(cvNamedWindow ${OpenCV_LIBRARIES})
+
+
+# ===========================
+# Cuda
+# ===========================
+option(BUILD_CUDA_EXAMPLES "Turn ON to build CV CUDA examples" OFF)
+if(BUILD_CUDA_EXAMPLES)
+    add_executable(cvCudaResize src/CudaResize.cpp)
+    target_link_libraries(cvCudaResize ${OpenCV_LIBRARIES})
+endif(BUILD_CUDA_EXAMPLES)
 
 file(COPY imgs DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
