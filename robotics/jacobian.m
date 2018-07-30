@@ -21,6 +21,10 @@ jac_qn = p560.jacob0(qn);
 pe = Te(1:3, 4);
 
 % loop through all robot links
+% For revolute joint
+%   Ji = [(z(i-1) x (pe - p(i-1)); z(i-1)]
+% For prismatic joint
+%   Ji = [z(i-1); zeros(3,1)]
 jac_g = zeros(6, p560.n);
 Tp = p560.base;
 for i = 1:p560.n
