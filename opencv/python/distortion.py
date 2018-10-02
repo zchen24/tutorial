@@ -46,7 +46,7 @@ def manual_image_undistortion(img, camera_matrix, dist_coefficient):
 
 
 # np array
-img = cv2.imread('./data/board.png', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('../imgs/board.png', cv2.IMREAD_GRAYSCALE)
 width = img.shape[1]
 height = img.shape[0]
 
