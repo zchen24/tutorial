@@ -8,3 +8,4 @@ This lib has examples for stdlib.
 * pair_test: std::test
 * string_test: std::string operations
 * keyboard_test: using poll and fgets to get keyinputs non-blocking
+* lock_guard: std::lock_guard example
