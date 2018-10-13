@@ -20,3 +20,8 @@ add_executable(pair_test pair_test.cpp)
 
 # std::cout example
 add_executable(cout_test cout_test.cpp)
+
+# poll and fgets
+add_executable(key_test key_test.cpp)
+set_target_properties(key_test PROPERTIES
+    CXX_STANDARD 11)
