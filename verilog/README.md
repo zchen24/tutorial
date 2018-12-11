@@ -10,3 +10,6 @@ Reference: Verilog by Example from Blaine C. Readler
 4. Standard Mux
 5. Bus Concatenation
 
+
+## Chapter 4 Clocks and Registers
+
