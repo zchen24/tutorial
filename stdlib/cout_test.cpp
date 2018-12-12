@@ -10,8 +10,18 @@
 
 int main(int argc, char** argv)
 {
-  double number = 10003.1415916;
+    double number = 10003.1415916;
+    std::cout << number << std::endl;
 
-  // precision after dot
-  std::cout << std::fixed << std::setprecision(3) << number << std::endl;
+    // save cout format
+    std::ios oldState(nullptr);
+    oldState.copyfmt(std::cout);
+
+    // precision after dot
+    std::cout << std::fixed << std::setprecision(3) << number << std::endl;
+    std::cout << number << std::endl;
+
+    // restore cout format
+    std::cout.copyfmt(oldState);
+    std::cout << number << std::endl;
 }
