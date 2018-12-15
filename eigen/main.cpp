@@ -1,10 +1,46 @@
+// Examples for Eigen library for linear algebra
+//
+// Date: 2018-12-11
+
+
 #include <iostream>
 #include <Eigen/Dense>
 #include <Eigen/SVD>
 using Eigen::MatrixXd;
 
+using namespace std;
+
 int main()
 {
+
+    cout << "fmod(2*pi,2*pi) = " << fmod(0.0 + 2 * M_PI, 2*M_PI) << "\n";
+
+    // -------------------------
+    // Vector
+    // -------------------------
+    cout << "----------------------------------\n"
+         << "Vector\n"
+         << "----------------------------------\n\n";
+
+    // fixed length
+    Eigen::Vector3d v1(1,2,3);
+    Eigen::Vector3d v2;
+    v2 << 4, 5, 6;
+    cout << "v1 = " << v1.transpose() << "\n"
+         << "v2 = " << v2.transpose() << "\n";
+
+    // indexing
+    v1(1) = 10;
+    cout << "v1(0) = " << v1(0) << "\n"
+         << "v1(1) = " << v1(1) << "\n";
+
+    // variable
+    Eigen::VectorXd vv(7);
+    vv << 7,8,9,10,11,12,13;
+    cout << "VectorXd vv = " << vv.transpose() << "\n";
+    cout << "vv.size() = " << vv.size() << "\n";
+
+
     // element access
     MatrixXd m(2,2);
     MatrixXd m22(2,2);
