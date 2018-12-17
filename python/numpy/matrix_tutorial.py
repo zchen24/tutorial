@@ -26,7 +26,15 @@ print('mat reshape = {}'.format(mat_flat.reshape(3,3)))
 # svd
 u, s, v = np.linalg.svd(mat)
 
+# pseudo-inverse
+mat_inv = np.linalg.pinv(mat, rcond=1e-5)
+print('mat pinv = \n{}\n'.format(mat_inv))
+
+# determinant
+d_mat = np.linalg.det(mat)
+print('det(mat) = {}\n'.format(d_mat))
 
 # bit shifting e.g. left shift 2-bits
 mat_left_shift = np.left_shift(mat.astype(np.uint32), 2)
 print('mat_left2 = {}'.format(mat_left_shift))
+
