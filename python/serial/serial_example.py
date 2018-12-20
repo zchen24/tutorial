@@ -7,20 +7,20 @@
 # pyserial documentation
 # http://pyserial.sourceforge.net/
 
-# pyserial
+from __future__ import print_function
 import serial
 
-def open_serial():
-    # serial port
-    ser = serial.Serial('/dev/ttyUSB0', 115200)
-    
-    ser.open()
-    if ser.isOpen():
-        print "serial is open"
-        data = ser.read(100)
-        print data
-        pass
 
 if __name__ == "__main__":
-    open_serial()
+    # serial port
+    ser = serial.Serial('/dev/ttyUSB0', 115200)
+    # ser.open()
+    if ser.isOpen():
+        print("serial is open")
+        data = ser.read(100)
+        print(data)
+        pass
 
+    # send byte(s)
+    # this send byte 15
+    ser.write(serial.to_bytes([15]))
