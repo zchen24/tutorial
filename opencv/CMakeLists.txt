@@ -99,6 +99,9 @@ option(BUILD_CUDA_EXAMPLES "Turn ON to build CV CUDA examples" OFF)
 if(BUILD_CUDA_EXAMPLES)
     add_executable(cvCudaResize src/CudaResize.cpp)
     target_link_libraries(cvCudaResize ${OpenCV_LIBRARIES})
+
+    add_executable(cvCuda101 src/Cuda101.cpp)
+    target_link_libraries(cvCuda101 ${OpenCV_LIBRARIES})
 endif(BUILD_CUDA_EXAMPLES)
 
 file(COPY imgs DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
