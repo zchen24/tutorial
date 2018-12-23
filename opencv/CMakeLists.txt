@@ -40,6 +40,10 @@ target_link_libraries(cvImage ${OpenCV_LIBRARIES})
 add_executable(cvDetectMotion src/DetectMotion.cpp)
 target_link_libraries(cvDetectMotion ${OpenCV_LIBRARIES})
 
+add_executable(cvInputOutputArray src/InputOutputArray.cpp)
+target_link_libraries(cvInputOutputArray ${OpenCV_LIBRARIES})
+
+
 # image processing
 add_executable(cvMorphology imgproc/Morphology.cpp)
 target_link_libraries(cvMorphology ${OpenCV_LIBRARIES})
