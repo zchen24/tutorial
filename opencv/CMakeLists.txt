@@ -9,6 +9,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 find_package(Qt5Widgets)
 
+
 add_executable(cvCamera src/Camera.cpp)
 target_link_libraries(cvCamera ${OpenCV_LIBRARIES})
 
@@ -97,11 +98,7 @@ target_link_libraries(cvNamedWindow ${OpenCV_LIBRARIES})
 # ===========================
 option(BUILD_CUDA_EXAMPLES "Turn ON to build CV CUDA examples" OFF)
 if(BUILD_CUDA_EXAMPLES)
-    add_executable(cvCudaResize src/CudaResize.cpp)
-    target_link_libraries(cvCudaResize ${OpenCV_LIBRARIES})
-
-    add_executable(cvCuda101 src/Cuda101.cpp)
-    target_link_libraries(cvCuda101 ${OpenCV_LIBRARIES})
+    add_subdirectory(cv_cuda)
 endif(BUILD_CUDA_EXAMPLES)
 
 file(COPY imgs DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
