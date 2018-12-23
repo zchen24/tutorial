@@ -28,3 +28,10 @@ add_executable(key_test key_test.cpp)
 # std::lock_guard example
 add_executable(lock_guard_test lock_guard_test.cpp)
 target_link_libraries(lock_guard_test pthread)
+
+# std::thread example
+add_executable(thread_test thread_test.cpp)
+target_link_libraries(thread_test pthread)
+
+# time difference
+add_executable(time_diff time_diff.cpp)
