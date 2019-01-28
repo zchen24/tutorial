@@ -46,6 +46,18 @@ namespace ConsoleApp1
             memberID = pMemberID;
             memberSince = pMemberSince;
         }
+
+        public virtual void Play() {
+            Console.WriteLine("BaseMember Play()");
+        }
+
+        public void FuncOverload() {
+            Console.WriteLine("FuncOverload: parameterless");
+        }
+
+        public void FuncOverload(string str) {
+            Console.WriteLine("FuncOverload: string parame = " + str);
+        }
     }
 
     class NormalMember : BaseMember
@@ -53,6 +65,12 @@ namespace ConsoleApp1
         public NormalMember()
         {
             Console.WriteLine("Derived constructor with no parameter");
+        }
+
+        public override void Play() {
+            Console.WriteLine("Calling: base.Play()");
+            base.Play();
+            Console.WriteLine("NormalMember Play()");
         }
     }
 
@@ -124,7 +142,12 @@ namespace ConsoleApp1
             Console.WriteLine("str1.Substring(0, 5) = {0}", str1.Substring(0, 5));
             Console.WriteLine("str1.Contains(\"Hello\") = {0}", str1.Contains("Hello"));
             Console.WriteLine("str1.Equals(\"Hello\") = {0}", str1.Equals("Hello"));
-            //Console.WriteLine("str1.Split = {0}", str1.Split(" ", StringSplitOptions.None));
+            string[] str1Splits = str1.Split(' ');
+            Console.Write("str1.Split = ");
+            for (int i = 0; i < str1Splits.Length; i++) {
+                Console.Write(str1Splits[i] + " || ");
+            }
+            Console.WriteLine("");
 
 
             // convert string to numbers
@@ -225,7 +248,7 @@ namespace ConsoleApp1
             // ----------------------
             // LINQ
             // ----------------------
-            int[] numbers = { 0, 1, 2, 3, 4};
+            int[] numbers = { 0, 1, 2, 3, 4 };
             var evenNumbers =
                 from num in numbers
                 where (num % 2) == 0
@@ -266,11 +289,35 @@ namespace ConsoleApp1
             // ----------------------
             // OOP
             // ----------------------
-            Console.WriteLine("===== OOP =====");
+            Console.WriteLine("\n===============");
+            Console.WriteLine(" OOP ");
+            Console.WriteLine("===============");
             NormalMember nMember = new NormalMember();
             Console.WriteLine(nMember);
 
-            // class.GetType() == typeof(DerivedClass)
+            // function override
+            Console.WriteLine("\nFunction overriding");
+            nMember.Play();
+
+            // function overload
+            Console.WriteLine("\nFunction overloading");
+            nMember.FuncOverload();
+            nMember.FuncOverload("A parameter");
+
+            // type check
+            Console.WriteLine("\nClass type check");
+            if (nMember.GetType() == typeof(BaseMember)) {
+                Console.WriteLine("nMember == BaseMember: True");
+            }
+            else {
+                Console.WriteLine("nMember == BaseMember: False");
+            }
+            if (nMember.GetType() == typeof(NormalMember)) {
+                Console.WriteLine("nMember == NormalMember: True");
+            }
+            else {
+                Console.WriteLine("nMember == NormalMember: False");
+            }
 
             // Keep the console window open in debug mode 
             Console.WriteLine("Press any key to exit");
