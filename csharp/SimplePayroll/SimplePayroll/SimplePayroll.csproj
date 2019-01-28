@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0B7585E1-8BF9-4330-8469-35A7066ED049}</ProjectGuid>
+    <ProjectGuid>{947CF043-6933-4217-A87F-8C1375B06563}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>csharp</RootNamespace>
-    <AssemblyName>csharp</AssemblyName>
+    <RootNamespace>SimplePayroll</RootNamespace>
+    <AssemblyName>SimplePayroll</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
