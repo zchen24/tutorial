@@ -4,12 +4,13 @@
 #include <stdio.h>
 #include <iostream>
 #include <cuda_runtime.h>
+#include "cuda_utils.h"
 
 #define N   64   // array length
 #define TPB 32   // threads per block
 
 // Convert i from 0, ..., n-1 to 0-1
-__device__ float scale(int i, int n) 
+__device__ float scale(int i, int n)
 {
     return ((float)i) / (n - 1);
 }
@@ -34,7 +35,7 @@ int main(int argc, char** argv)
     const float ref = 0.5f;
     float *out = (float*)calloc(N, sizeof(float));
     float *d_out = 0;
-    cudaMalloc(&d_out, N*sizeof(float));    
+    cudaMalloc(&d_out, N*sizeof(float));
 
     distanceKernel<<<N/TPB, TPB>>> (d_out, ref, N);
 
@@ -48,4 +49,4 @@ int main(int argc, char** argv)
     cudaFree(d_out);
     free(out);
     return 0;
-} 
+}

@@ -15,13 +15,13 @@ float scale(int i, int n)
 // compute the distance between 2 points
 float distance(float x1, float x2)
 {
-    return sqrt((x2 - x1) * (x2 - x1));
+    return static_cast<float>(sqrt((x2 - x1) * (x2 - x1)));
 }
 
 
 int main(int argc, char** argv)
 {
-	std::cout << "Hello CUDA\n";
+	std::cout << "dist_v1: sequential CPU implementation\n";
     float out[N] = { 0.0f };
     const float ref = 0.5f;
 
