@@ -5,8 +5,8 @@
 #include <iostream>
 
 
-#define W   10
-#define H   10
+#define W   500
+#define H   500
 #define TX  32      // thread per block along x
 #define TY  32      // thread per block along y
 
@@ -41,9 +41,7 @@ int main()
     cudaMemcpy(out, d_out, W*H*sizeof(float), cudaMemcpyDeviceToHost);
 
     std::cout << "bx = " << bx << "  by = " << by << "\n";
-    std::cout << "dist_2d: nsight\n";
-    std::cout << "out[0] = " << out[0] << "   out[99] = " << out[99] << '\n';
-
+    std::cout << "out[0] = " << out[0] << "   out[end] = " << out[W*H-1] << '\n';
 
     return 0;
 }
