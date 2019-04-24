@@ -43,6 +43,9 @@ int main()
     std::cout << "bx = " << bx << "  by = " << by << "\n";
     std::cout << "out[0] = " << out[0] << "   out[end] = " << out[W*H-1] << '\n';
 
+    free(out);
+    cudaFree(d_out);
+
     return 0;
 }
 

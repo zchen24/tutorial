@@ -10,6 +10,8 @@ build
 */srv_gen/*
 */bin/*
 *~
+Debug
+Release
 
 qtcreator-build-*
 CMakeLists.txt.user

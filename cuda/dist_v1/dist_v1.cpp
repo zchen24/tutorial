@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <math.h>
+#include <cuda_runtime.h>
+
+
 
 #define N 64   // array length
 
