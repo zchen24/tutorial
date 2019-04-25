@@ -2,6 +2,9 @@
 # general
 *~ 
 .vscode
+.cproject
+.project
+.metadata
 
 # ros related
 */lib/*
