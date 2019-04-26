@@ -8,6 +8,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # chapter 0
 add_subdirectory(printf)        # device printf
+add_subdirectory(device_property)
 
 add_subdirectory(dist_v1)
 add_subdirectory(dist_v1_cuda)
@@ -19,7 +20,8 @@ add_subdirectory(dist_v2_cuda_unified)
 add_subdirectory(dist_2d)       # 2d
 
 # chapter 5
-add_subdirectory(dd_1d_global)  
+add_subdirectory(dd_1d_global)  # global 
+add_subdirectory(dd_1d_shared)  # shared_mem
 add_subdirectory(sharpen)       # stencil
 
 

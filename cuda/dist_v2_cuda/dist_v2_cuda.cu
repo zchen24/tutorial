@@ -7,9 +7,10 @@
 #include <iomanip>
 
 #define TPB 32
-#define N 10
+#define N 256000
+#define M 5   // number of times to do cudaMemcpy
 
-#define DEBUG 1
+#define DEBUG 0
 
 __device__ 
 float distance(float x1, float x2)
@@ -35,10 +36,22 @@ void distanceArray(float *out, float *in, float ref, int len)
     cudaMalloc(&d_out, len * sizeof(float));
 
     // memcpy to device
-    cudaMemcpy(d_in, in, len * sizeof(float), cudaMemcpyHostToDevice);
+    struct timespec t0 = {0,0};
+    struct timespec t1 = {0,0};
+    clock_gettime(CLOCK_REALTIME, &t0);
+    for (int i = 0; i < M; i++) {
+        cudaMemcpy(d_in, in, len * sizeof(float), cudaMemcpyHostToDevice);
+    }
+    clock_gettime(CLOCK_REALTIME, &t1);
+    std::cout << "Data transfer time (ms) = " << (t1.tv_sec-t0.tv_sec)*1e3 + (t1.tv_nsec-t0.tv_nsec)/1e6  << "\n";
+
 
     // call wrapper
+    clock_gettime(CLOCK_REALTIME, &t0);
     distanceKernel<<<(len+TPB-1)/TPB, TPB>>>(d_out, d_in, ref, len);
+    cudaDeviceSynchronize();
+    clock_gettime(CLOCK_REALTIME, &t1);
+    std::cout << "Kernel time (ms) = " << (t1.tv_sec-t0.tv_sec)*1e3 + (t1.tv_nsec-t0.tv_nsec)/1e6  << "\n";
 
     // memcpy from device
     cudaMemcpy(out, d_out, len * sizeof(float), cudaMemcpyDeviceToHost);

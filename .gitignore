@@ -5,6 +5,7 @@
 .cproject
 .project
 .metadata
+.settings
 
 # ros related
 */lib/*

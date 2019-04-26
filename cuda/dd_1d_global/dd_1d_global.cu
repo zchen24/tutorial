@@ -32,6 +32,8 @@ void ddParallel(float *out, const float *in, int n, float h)
     ddKernel<<<(n+TPB-1)/TPB, TPB>>>(d_out, d_in, n, h);
 
     cudaMemcpy(out, d_out, n*sizeof(float), cudaMemcpyDeviceToHost);
+    cudaFree(d_out);
+    cudaFree(d_in);
 }
 
 
