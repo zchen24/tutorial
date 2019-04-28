@@ -24,6 +24,11 @@ add_subdirectory(dd_1d_global)  # global
 add_subdirectory(dd_1d_shared)  # shared_mem
 add_subdirectory(sharpen)       # stencil
 
+# chapter 6
+add_subdirectory(parallel_dot)
+add_subdirectory(centroid_2d)
+
+
 
 # chapter 8: cuda lib
 add_subdirectory(norm)          # thrust: inner_product
