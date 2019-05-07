@@ -9,6 +9,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # chapter 0
 add_subdirectory(printf)        # device printf
 add_subdirectory(device_property)
+add_subdirectory(per_stream)
 
 add_subdirectory(dist_v1)
 add_subdirectory(dist_v1_cuda)

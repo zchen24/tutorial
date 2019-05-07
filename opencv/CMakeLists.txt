@@ -45,6 +45,9 @@ target_link_libraries(cvInputOutputArray ${OpenCV_LIBRARIES})
 
 
 # image processing
+add_executable(cvResize imgproc/Resize.cpp)
+target_link_libraries(cvResize ${OpenCV_LIBRARIES})
+
 add_executable(cvMorphology imgproc/Morphology.cpp)
 target_link_libraries(cvMorphology ${OpenCV_LIBRARIES})
 
@@ -66,6 +69,9 @@ target_link_libraries(cvCanny ${OpenCV_LIBRARIES})
 add_executable(cvColorSpace imgproc/ColorSpace.cpp)
 target_link_libraries(cvColorSpace ${OpenCV_LIBRARIES})
 
+add_executable(cvCCM imgproc/ColorCorrectionMatrix.cpp)
+target_link_libraries(cvCCM ${OpenCV_LIBRARIES})
+
 add_executable(cvHoughLines imgproc/Houghlines.cpp)
 target_link_libraries(cvHoughLines ${OpenCV_LIBRARIES})
 
@@ -86,6 +92,8 @@ target_link_libraries(cvMatchTemplate ${OpenCV_LIBRARIES})
 
 add_executable(cvContours imgproc/Contours.cpp)
 target_link_libraries(cvContours ${OpenCV_LIBRARIES})
+
+
 
 # ===========================
 # Highgui

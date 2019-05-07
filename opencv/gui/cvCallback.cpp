@@ -23,7 +23,7 @@ public:
 
 private:
     void realMouseCallback(int event, int x, int y, int flags) {
-        if (event == CV_EVENT_RBUTTONDOWN)
+        if (event == cv::EVENT_RBUTTONDOWN)
         {
             // convert to CVStereoView
             std::cout << "Right mouse button pressed\n";
