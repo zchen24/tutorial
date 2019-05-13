@@ -38,3 +38,23 @@ add_subdirectory(curand_pi)     # curand
 add_subdirectory(sharpen_npp)   # npp: sharpen
 add_subdirectory(tricoloring)   # npp: swap, element add
 add_subdirectory(linreg)        # cublas, cusolver
+
+
+
+#------------------------
+# CUDA by Example 
+#------------------------
+
+find_package(OpenCV)
+if (OpenCV_FOUND)
+
+# chapter 4
+#add_subdirectory(04_julia)
+
+# chapter 5
+# add_subdirectory(04_julia)
+
+endif (OpenCV_FOUND)
+
+# chapter 10
+add_subdirectory(10_pinned_mem)
