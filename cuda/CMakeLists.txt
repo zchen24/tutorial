@@ -57,4 +57,4 @@ if (OpenCV_FOUND)
 endif (OpenCV_FOUND)
 
 # chapter 10
-add_subdirectory(10_pinned_mem)
+add_subdirectory(10_stream)
