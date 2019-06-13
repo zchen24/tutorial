@@ -58,7 +58,7 @@ ret, cmx, dist, rvecs, tvecs = cv2.calibrateCamera(
 np.savez('calib.npz', cmx=cmx, dist=dist, rvecs=rvecs, tvecs=tvecs)
 
 
-# Step 3: Validation Undistor Image
+# Step 3: Validation Undistort Image
 img = cv2.imread('./data/left02.jpg')
 img_size = grey.shape[::-1]
 newcmx, roi=cv2.getOptimalNewCameraMatrix(cmx, dist, img_size, 0, img_size)
@@ -70,7 +70,7 @@ cv2.waitKey(500)
 cv2.destroyAllWindows()
 # pdb.set_trace()
 
-# Step 4: Reporject Points
+# Step 4: Reproject Points
 img = cv2.imread(img_list_detected[0])
 imgpts2,_ = cv2.projectPoints(objp, rvecs[0], tvecs[0], cmx, dist)
 for pt in imgpts2:
