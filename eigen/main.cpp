@@ -3,6 +3,8 @@
 // Date: 2018-12-11
 
 
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <iostream>
 #include <Eigen/Dense>
 #include <Eigen/SVD>
