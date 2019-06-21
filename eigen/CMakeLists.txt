@@ -12,6 +12,14 @@ find_package(Eigen3 REQUIRED NO_MODULE)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 # matrix
-add_executable(matrix main.cpp)
+add_executable(matrix matrix.cpp)
 target_link_libraries(matrix Eigen3::Eigen)
+
+# map from raw memory
+add_executable(matrix_map matrix_map.cpp)
+target_link_libraries(matrix_map Eigen3::Eigen)
+
+# matrix block access
+add_executable(matrix_block matrix_block.cpp)
+target_link_libraries(matrix_block Eigen3::Eigen)
 
