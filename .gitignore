@@ -26,4 +26,4 @@ cisstLog.txt
 
 # cython
 *.html
-
+.idea
