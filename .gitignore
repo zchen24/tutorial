@@ -21,6 +21,9 @@ qtcreator-build-*
 CMakeLists.txt.user
 cisstLog.txt
 .ropeproject
+*.npz
+
 
 # cython
 *.html
+
