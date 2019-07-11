@@ -39,3 +39,6 @@ add_executable(key_test key_test.cpp)
 
 # time difference
 add_executable(time_diff time_diff.cpp)
+
+# std::chrono
+add_executable(std_chrono std_chrono.cpp)
