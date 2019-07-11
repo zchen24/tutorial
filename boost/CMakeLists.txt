@@ -17,6 +17,12 @@ add_executable(shared_ptr shared_ptr_test.cpp)
 add_executable(b_thread b_thread.cpp)
 target_link_libraries(b_thread ${Boost_LIBRARIES})
 
+add_executable(b_thread_interrupt b_thread_interrupt.cpp)
+target_link_libraries(b_thread_interrupt ${Boost_LIBRARIES})
+
+add_executable(b_thread_detach b_thread_detach.cpp)
+target_link_libraries(b_thread_detach ${Boost_LIBRARIES})
+
 # boost format
 add_executable(b_format b_format.cpp)
 
