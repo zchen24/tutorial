@@ -12,7 +12,6 @@
 import numpy as np
 import cv2
 import glob
-import pdb
 
 # Step 1: Data prep 
 img_list = glob.glob('./data/left*.jpg')
@@ -41,7 +40,7 @@ for fname in img_list:
         imgpoints.append(corners)
         objpoints.append(objp)
         img_list_detected.append(fname)
-        print fname
+        print(fname)
 
     cv2.imshow('img',img)
     cv2.waitKey(500)
@@ -68,7 +67,6 @@ cv2.imshow('original', img)
 cv2.imshow('undistort', dst)
 cv2.waitKey(500)
 cv2.destroyAllWindows()
-# pdb.set_trace()
 
 # Step 4: Reproject Points
 img = cv2.imread(img_list_detected[0])
@@ -79,8 +77,3 @@ for pt in imgpts2:
 cv2.imshow('reproject', img)
 cv2.waitKey()
 cv2.destroyAllWindows()
-
-
-
-
-
