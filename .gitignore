@@ -27,3 +27,7 @@ cisstLog.txt
 # cython
 *.html
 .idea
+cmake-build-debug
+cmake-build-release
+__pycache__
+.ipynb_checkpoints
