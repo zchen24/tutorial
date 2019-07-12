@@ -22,6 +22,11 @@ if(BUILD_OPENCV)
     add_subdirectory(opencv)
 endif(BUILD_OPENCV)
 
+option(BUILD_PYBIND11 "Build Pybind11 examples" OFF)
+if(BUILD_PYBIND11)
+    add_subdirectory(pybind11)
+endif(BUILD_PYBIND11)
+
 #add_subdirectory(raw1394)
 #add_subdirectory(json)
 #add_subdirectory(kdl)
