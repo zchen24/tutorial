@@ -48,3 +48,10 @@ def RotZYX(z: float, y: float, x: float):
 def SLERP():
     print("TBD")
     pass
+
+
+if __name__ == '__main__':
+    ax = np.array([1, 0, 0])
+    ay = np.array([0, 1, 0])
+    az = np.cross(ax, ay)
+    print('')
