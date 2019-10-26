@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <time.h>
+#include <signal.h>
 #include <sys/siginfo.h>
 
 void sig_alarm_handler( int sig_number )
