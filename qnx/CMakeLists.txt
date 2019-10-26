@@ -1,18 +1,29 @@
 cmake_minimum_required(VERSION 3.0)
 project("qnx_example")
 
-add_executable(ex_fork ex_fork.cpp)
+set(EXAMPLES
+  ex_fork
 
-add_executable(ex_thread_create ex_thread_create.cpp)
-add_executable(ex_thread_join ex_thread_join.cpp)
-add_executable(ex_thread_barrier ex_thread_barrier.cpp)
+  ex_thread_create
+  ex_thread_join
+  ex_thread_barrier
 
+  ex_msg_client
+  ex_msg_server
 
-add_executable(ex_msg_client ex_msg_client.cpp)
-add_executable(ex_msg_server ex_msg_server.cpp)
+  ex_sched
+  ex_fcntl
+  ex_timer
+  ex_clock
+  ex_kernel_timeout
+  )
 
-add_executable(ex_sched ex_sched.cpp)
-add_executable(ex_fcntl ex_fcntl.cpp)
-add_executable(ex_timer ex_timer.cpp)
-add_executable(ex_clock ex_clock.cpp)
-add_executable(ex_kernel_timeout ex_kernel_timeout.cpp)
+message("CMAKE_SYSTEM_NAME: " ${CMAKE_SYSTEM_NAME})
+
+foreach(example ${EXAMPLES})
+  add_executable(${example} ${example}.cpp)
+
+  if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
+    target_link_libraries(${example} pthread)
+  endif()
+endforeach()
