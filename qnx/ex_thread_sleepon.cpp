@@ -12,7 +12,7 @@
 
 pthread_barrier_t barrier;
 
-void* thread1(void *)
+void* read_thread1(void *)
 {
     time_t now;
     time(&now);
@@ -46,7 +46,7 @@ int main(int argc, char** argv)
     pthread_barrier_init(&barrier, nullptr, 3);
 
     // start up two threads
-    pthread_create(&t1, nullptr, thread1, nullptr);
+    pthread_create(&t1, nullptr, read_thread1, nullptr);
     pthread_create(&t2, nullptr, thread2, nullptr);
 
     // t1, t2 are running

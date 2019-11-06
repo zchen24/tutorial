@@ -7,6 +7,9 @@ set(EXAMPLES
   ex_thread_create
   ex_thread_join
   ex_thread_barrier
+  ex_thread_rwlock
+  ex_thread_sleepon
+  ex_thread_condvar
 
   ex_msg_client
   ex_msg_server
