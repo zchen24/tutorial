@@ -22,6 +22,7 @@ class MyWidget(QWidget):
 
         # IMPORTANT:
         # parent = self, don't miss this
+        # otherwise, the btn_group will be deleted
         btn_group = QButtonGroup(self)
         btn_group.addButton(rb1)
         btn_group.addButton(rb2)
