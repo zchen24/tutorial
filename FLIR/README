@@ -1,3 +1,15 @@
-Python Examples for FLIR Spinnaker API
+Python Examples for FLIR Spinnaker API.
+Note: code is for demonstration purpose, and does not handle
+return and exceptions. Please add in production code.
+
+#   Comments
+00  Basic setup & cleanup
+01  Acquisition: acquire image & save
+02  BufferHandling: host side buffer handling mode
+
+
+# Official Examples
+SpinUpdate.py   How to update camera firmware
+
 
 Date: 2019-12-21
