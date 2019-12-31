@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 """
-Shows how to acquire an image. See Exposure_QuickSpin.py example
+Shows how to manually change camera's exposure time.
+See Exposure_QuickSpin.py example
 
 This program sets camera to different exposure time, then take an
 image. Note the buffer handling mode is set to NewestOnly to make
@@ -16,7 +17,7 @@ import time
 import PySpin
 
 
-def set_exposure(cam:PySpin.CameraPtr, exposure_ms: int):
+def set_exposure(cam: PySpin.CameraPtr, exposure_ms: int):
     cam.ExposureAuto.SetValue(PySpin.ExposureAuto_Off)
     exp_max = cam.ExposureTime.GetMax()
     if exposure_ms > exp_max:
@@ -29,7 +30,7 @@ def set_exposure(cam:PySpin.CameraPtr, exposure_ms: int):
     print('Set exposure to {} ms'.format(exposure_ms))
 
 
-def reset_exposure(cam:PySpin.CameraPtr):
+def reset_exposure(cam: PySpin.CameraPtr):
     try:
         cam.ExposureAuto.SetValue(PySpin.ExposureAuto_Continuous)
         print('Automatic exposure enabled...')
@@ -54,7 +55,6 @@ print('StreamBuffer handling mode set to NewestOnly...')
 
 cam.BeginAcquisition()
 cam_serial_number = cam.DeviceSerialNumber.ToString()
-NUM_IMAGES = 10
 
 exposure_all = [1000, 2000, 3000, 4000, 5000]
 
