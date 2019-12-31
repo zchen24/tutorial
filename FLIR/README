@@ -6,6 +6,9 @@ return and exceptions. Please add in production code.
 00  Basic setup & cleanup
 01  Acquisition: acquire image & save
 02  BufferHandling: host side buffer handling mode
+06  ChunkData: append additional meta data to the image
+07  BufferHandling: shows different host side buffer handling policy
+08  SaveToAvi: PySpin save to avi feature
 
 99  OpenCV and FLIR images
 
