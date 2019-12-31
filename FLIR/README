@@ -9,6 +9,7 @@ return and exceptions. Please add in production code.
 06  ChunkData: append additional meta data to the image
 07  BufferHandling: shows different host side buffer handling policy
 08  SaveToAvi: PySpin save to avi feature
+09  Trigger: software trigger
 
 99  FLIR_CV2: how to convert PySpin image to OpenCV image
 
