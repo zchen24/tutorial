@@ -10,7 +10,7 @@ return and exceptions. Please add in production code.
 07  BufferHandling: shows different host side buffer handling policy
 08  SaveToAvi: PySpin save to avi feature
 
-99  OpenCV and FLIR images
+99  FLIR_CV2: how to convert PySpin image to OpenCV image
 
 # Official Examples
 SpinUpdate.py   How to update camera firmware
