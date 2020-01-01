@@ -10,6 +10,7 @@ return and exceptions. Please add in production code.
 07  BufferHandling: shows different host side buffer handling policy
 08  SaveToAvi: PySpin save to avi feature
 09  Trigger: software trigger
+11  AcquisitionFrameRate: manually set acquisition frame rate
 
 99  FLIR_CV2: how to convert PySpin image to OpenCV image
 
