@@ -14,6 +14,7 @@ return and exceptions. Please add in production code.
 10  Sequencer: shows how to use the sequencer feature
 11  AcquisitionFrameRate: manually set acquisition frame rate
 12  ImageBinning: Reduce image size by binning pixels
+13  GenTLInfo: GenICam Transport Layer information
 
 99  FLIR_CV2: how to convert PySpin image to OpenCV image
 
