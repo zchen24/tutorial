@@ -5,17 +5,26 @@ return and exceptions. Please add in production code.
 #   Comments
 00  Basic setup & cleanup
 01  Acquisition: acquire image & save
-02  BufferHandling: host side buffer handling mode
+02  Exposure: manually set exposure time
+03  CounterAndTimer: how to use one of the 2 counters and trigger image capture
 06  ChunkData: append additional meta data to the image
 07  BufferHandling: shows different host side buffer handling policy
 08  SaveToAvi: PySpin save to avi feature
 09  Trigger: software trigger
+10  Sequencer: shows how to use the sequencer feature
 11  AcquisitionFrameRate: manually set acquisition frame rate
 
 99  FLIR_CV2: how to convert PySpin image to OpenCV image
 
 # Official Examples
 SpinUpdate.py   How to update camera firmware
+
+Access Mode:
+0: NI   Not Implemented
+1: NA   Not Available
+2: WO   Write Only
+3: RO   Read Only
+4: RW   Read and Write
 
 
 Date: 2019-12-21
