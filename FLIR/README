@@ -7,6 +7,7 @@ return and exceptions. Please add in production code.
 01  Acquisition: acquire image & save
 02  Exposure: manually set exposure time
 03  CounterAndTimer: how to use one of the 2 counters and trigger image capture
+05  ImageEvents: demos how to use events interface
 06  ChunkData: append additional meta data to the image
 07  BufferHandling: shows different host side buffer handling policy
 08  SaveToAvi: PySpin save to avi feature
