@@ -22,4 +22,5 @@ if __name__ == '__main__':
                                               filters,
                                               initial_filter,
                                               options)
+    print('Selected file: {}'.format(filename))
     sys.exit(app.exec_())
