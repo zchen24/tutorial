@@ -22,7 +22,7 @@ from qtpy.QtCore import *
 
 # Todo list:
 #  - add GUI for mono calibration
-#  - minic the Matlab's GUI
+#  - mimic the Matlab's GUI
 
 # Future release
 #  - generate PDF checker file from Python class

@@ -12,7 +12,9 @@ import cv2
 
 
 im = cv2.imread('./data/empire.jpg', cv2.IMREAD_GRAYSCALE)
-H = np.array([[1.4,0.05,-100],[0.05,1.5,-100],[0,0,1]])
+H = np.array([[1.4,0.05,-100],
+              [0.05,1.5,-100],
+              [0,0,1]])
 
 # A = H[:2,:2]
 # t = H[:2,2]

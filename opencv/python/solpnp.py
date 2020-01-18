@@ -32,7 +32,7 @@ objp = np.zeros((6*7,3), np.float32)
 objp[:,:2] = np.mgrid[0:7,0:6].T.reshape(-1,2)
 
 # compute transform
-#   - solvePnP requires camera calibraiton
+#   - solvePnP requires camera calibration
 #   - the same info is also returned by calibrateCamera 
 ret, rvec, tvec = cv2.solvePnP(objp, corners, cmx, dist)
 
