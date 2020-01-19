@@ -11,6 +11,7 @@ from qtpy.QtWidgets import *
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
+    # Get single file
     options = QFileDialog.Options()
     caption = "Title: Getting File Name"
     directory = "./"
@@ -23,4 +24,11 @@ if __name__ == '__main__':
                                               initial_filter,
                                               options)
     print('Selected file: {}'.format(filename))
+
+    # Select multiple files
+
+    # getSaveFileName
+
+    # Get directory
+
     sys.exit(app.exec_())
