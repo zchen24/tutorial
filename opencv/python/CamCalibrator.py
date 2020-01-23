@@ -80,7 +80,7 @@ class CheckerBoardInfo(object):
     def dim(self, value):
         self._square = self._check_value(value)
 
-    def make_object(self):
+    def make_object_points(self):
         # type must be float32 as calibrator expects Point3f type
         opts = np.zeros((self.rows*self.cols, 1, 3), dtype=np.float32)
         for jj, opt in enumerate(opts):
@@ -201,7 +201,7 @@ class CalibratorMono(object):
             self._img_size = img.shape[:2]
 
         checkerboard_size = self.checkerboard.size
-        objs = self.checkerboard.make_object()
+        objs = self.checkerboard.make_object_points()
         if img.shape[:2] != self._img_size:
             print('Image size does not match, please check your data')
             return False
@@ -243,6 +243,13 @@ class CalibratorMono(object):
             self.detect_chessboard_one(file, show)
 
     def calibrate(self, img_size=None, points_board=None, points_image=None, flags=None):
+        """
+        :param img_size: image size (width, height)
+        :param points_board: points on the calibration board (list)
+        :param points_image: points found in images (list)
+        :param flags: flags to be passed into cv::calibrateCamera function
+        :return:
+        """
         if img_size is None:
             img_height, img_width = self._img_size
         else:
@@ -277,7 +284,7 @@ class CalibratorMono(object):
 
     def verify(self, info: CameraInfoMono):
         print('verifying camera calibration')
-        objs = self.checkerboard.make_object()
+        objs = self.checkerboard.make_object_points()
         reproject_errs = []
         for i, _ in enumerate(info.image_files):
             pts_mono = self._points_image[i]

@@ -25,12 +25,12 @@ objp[:,:2] = np.mgrid[0:7,0:6].T.reshape(-1,2)
 size = (7,6)
 
 # Arrays to store object points and image points from all the images.
-objpoints = [] # 3d point in real world space
-imgpoints = [] # 2d points in image plane.
+obj_points = [] # 3d point in real world space
+img_points = [] # 2d points in image plane.
 num_detected = 0
 
-for fname in img_list:
-    img = cv2.imread(fname)
+for file in img_list:
+    img = cv2.imread(file)
     grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     ret, corners = cv2.findChessboardCorners(grey, size, None)
@@ -40,10 +40,10 @@ for fname in img_list:
     if ret:
         criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
         cv2.cornerSubPix(grey,corners,(11,11),(-1,-1),criteria)
-        imgpoints.append(corners)
-        objpoints.append(objp)
-        img_list_detected.append(fname)
-        print('Detected {:02}: {}'.format(num_detected, fname))
+        img_points.append(corners)
+        obj_points.append(objp)
+        img_list_detected.append(file)
+        print('Detected {:02}: {}'.format(num_detected, file))
         num_detected += 1
     cv2.imshow('img',img)
     cv2.waitKey(500)
@@ -61,7 +61,7 @@ cv2.destroyAllWindows()
 K = np.eye(3)
 D = np.zeros((1, 5))
 ret, K, D, rvecs, tvecs = cv2.calibrateCamera(
-    objpoints, imgpoints,
+    obj_points, img_points,
     grey.shape[::-1],
     cameraMatrix=K,
     distCoeffs=D,
@@ -74,9 +74,12 @@ np.savez('calib.npz', cmx=K, dist=D, rvecs=rvecs, tvecs=tvecs)
 # Step 3: Validation Undistort Image
 img = cv2.imread('./data/left02.jpg')
 img_size = grey.shape[::-1]
-newcmx, roi = cv2.getOptimalNewCameraMatrix(K, D, img_size, 0, img_size)
+# 0: all pixels in undistorted image are valid
+# 1: all source image pixels are retained
+alpha = 0
+new_K, roi = cv2.getOptimalNewCameraMatrix(K, D, img_size, 0, img_size)
 
-dst = cv2.undistort(img, K, D, None, newcmx)
+dst = cv2.undistort(img, K, D, None, new_K)
 cv2.imshow('original', img)
 cv2.imshow('undistort', dst)
 cv2.waitKey(0)
