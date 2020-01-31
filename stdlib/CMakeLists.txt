@@ -40,10 +40,17 @@ add_executable(key_test key_test.cpp)
 # time difference
 add_executable(time_diff time_diff.cpp)
 
+# std::atomic
+add_executable(std_atomic std_atomic.cpp)
+target_link_libraries(std_atomic pthread)
+
 # std::chrono
 add_executable(std_chrono std_chrono.cpp)
 
 # std::set
 add_executable(std_set std_set.cpp)
+
+# std::tuple
+add_executable(std_tuple std_tuple.cpp)
 
 add_executable(class_override class_override.cpp)
