@@ -1,0 +1,7 @@
+This example depends on SOEM library 
+
+- clone: git clone https://github.com/OpenEtherCATsociety/SOEM.git
+- build & install
+
+
+
