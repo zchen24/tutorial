@@ -1,4 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
+"""
+Cython Extension Module example
+
+Date: 2020-02-08
+"""
 
 
 def integrate(double a, double b, f, int N=2000):
