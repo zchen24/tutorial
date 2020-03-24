@@ -14,6 +14,9 @@ add_subdirectory(cisstRobot)
 # mtsTutorial
 add_subdirectory(mtsTutorial)
 
+# mtsPreemprtRT
+add_subdirectory(mtsPreemptRT)
+
 # svlTutorial
 #add_subdirectory(svlTutorial)
 
