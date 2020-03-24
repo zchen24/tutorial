@@ -53,4 +53,7 @@ add_executable(std_set std_set.cpp)
 # std::tuple
 add_executable(std_tuple std_tuple.cpp)
 
+# std::map
+add_executable(std_map std_map.cpp)
+
 add_executable(class_override class_override.cpp)

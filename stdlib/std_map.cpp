@@ -1,5 +1,5 @@
 /**
- * Shows how to use std::tuple
+ * Shows how to use std::map
  *
  * Author: Zihan Chen
  * Date: 2020-01-30
@@ -8,24 +8,35 @@
  */
 
 #include <iostream>
-#include <tuple>
+#include <map>
 
 
 int main(int, char**)
 {
-    std::tuple<char, int, float> my_tuple;
-    my_tuple = std::make_tuple('m', 1, 1.5);
-    std::cout << "Tuple value: "
-              << std::get<0>(my_tuple) << "\t"
-              << std::get<1>(my_tuple) << "\t"
-              << std::get<2>(my_tuple) << "\n";
+    std::map<int, int> imap;
+    imap[0] = 0;
+    imap[1] = 2;
+    imap[2] = 4;
+    imap[3] = 6;
+    imap[4] = 8;
+    imap[5] = 10;
 
-    // change value in tuple
-    std::get<1>(my_tuple) = 10;
-    std::cout << "Tuple value: "
-              << std::get<0>(my_tuple) << "\t"
-              << std::get<1>(my_tuple) << "\t"
-              << std::get<2>(my_tuple) << "\n";
+    for (auto it = imap.begin(); it != imap.end(); it++) {
+        std::cout << "map <" << it->first << ", " << it->second << ">\n";
+    }
+    std::cout << "\n";
+
+    for (auto it = imap.begin(); it != imap.end(); it++) {
+        if (it->first == 2) {
+            imap.erase(it);
+        }
+
+    }
+
+    for (auto it:imap) {
+        std::cout << "map <" << it.first << ", " << it.second << ">\n";
+    }
+    std::cout << "\n";
 
     return 0;
 }
