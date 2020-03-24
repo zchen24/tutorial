@@ -12,6 +12,11 @@ if(BUILD_BOOST)
     add_subdirectory(boost)
 endif(BUILD_BOOST)
 
+option(BUILD_CISST "Build cisst examples" OFF)
+if(BUILD_CISST)
+    add_subdirectory(cisst)
+endif(BUILD_CISST)
+
 option(BUILD_EIGEN "Build Eigen examples" OFF)
 if(BUILD_EIGEN)
     add_subdirectory(eigen)
