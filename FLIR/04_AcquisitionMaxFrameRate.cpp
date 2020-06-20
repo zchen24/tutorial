@@ -1,49 +1,68 @@
-#!/usr/bin/env python3
-
-"""
-Shows how to stream video max speed (over 200 FPS)
-Author: Zihan Chen
-Date: 2020-01-06
-"""
-
-import PySpin
+/*
+ * Shows how to stream video max speed (over 200 FPS)
+ *
+ * */
 
 
-system = PySpin.System_GetInstance()
+#include "Spinnaker.h"
+#include <iostream>
 
-cam_list = system.GetCameras()
-cam = cam_list.GetByIndex(0)
-cam.Init()
+using namespace Spinnaker;
+using namespace Spinnaker::GenApi;
+using namespace Spinnaker::GenICam;
 
-cam.AcquisitionMode.SetValue(PySpin.AcquisitionMode_Continuous)
-print('Acquisition mode set to continuous...')
 
-# Turn off all auto algorithm: Exposure/Gain/WhiteBalance
-cam.ExposureAuto.SetValue(PySpin.ExposureAuto_Off)
-cam.ExposureTime.SetValue(2000)
-cam.GainAuto.SetValue(PySpin.GainAuto_Off)
-cam.Gain.SetValue(1.0)
-cam.BalanceWhiteAuto.SetValue(PySpin.BalanceWhiteAuto_Off)
+int main(int /*argc*/, char** /*argv*/)
+{
+    std::cout << "FLIR: Acquisition\n";
+    auto system = System::GetInstance();
+    auto cam_list = system->GetCameras();
 
-# Set AcquisitionFrameRate
-cam.AcquisitionFrameRateEnable.SetValue(True)
-cam.AcquisitionFrameRate.SetValue(226)
-print('Result frame rate = {} fps\n'.format(cam.AcquisitionResultingFrameRate.GetValue()))
+    if (cam_list.GetSize() == 0) {
+        std::cerr << "No cameras found\n";
+        cam_list.Clear();
+        system->ReleaseInstance();
+        return -1;
+    }
 
-# Start acquisition
-cam.BeginAcquisition()
-NUM_IMAGES = 10
-t_start = None
-for i in range(NUM_IMAGES):
-    img = cam.GetNextImage()
-    if t_start is None:
-        t_start = img.GetTimeStamp()
-    print('FrameID = {}, Timestamp = {:.03f} ms'.format(img.GetFrameID(),
-                                                   (img.GetTimeStamp() - t_start)/1000000))
-    img.Release()
-cam.EndAcquisition()
+    auto cam = cam_list.GetByIndex(0);
+    cam->Init();
 
-cam.DeInit()
-del cam
-cam_list.Clear()
-system.ReleaseInstance()
+    cam->AcquisitionMode.SetValue(AcquisitionMode_Continuous);
+    printf("Acquisition mode set to continuous...");
+
+    // Turn off all auto algorithms
+    cam->ExposureAuto.SetValue(ExposureAuto_Off);
+    cam->ExposureTime.SetValue(2000);
+    cam->GainAuto.SetValue(GainAuto_Off);
+    cam->Gain.SetValue(1.0);
+    cam->BalanceWhiteAuto.SetValue(BalanceWhiteAuto_Off);
+
+    // Set Acquisition frame rate
+    cam->AcquisitionFrameRateEnable.SetValue(true);
+    cam->AcquisitionFrameRate.SetValue(226);
+    printf("Result frame rate = %f fps\n", cam->AcquisitionResultingFrameRate.GetValue());
+
+    // Start acquisition
+    cam->BeginAcquisition();
+    const int NUM_IMAGES = 10;
+    uint64_t t_start = -1;
+    for (int i = 0; i < NUM_IMAGES; i++) {
+        auto img = cam->GetNextImage();
+        if (!img->IsIncomplete()) {
+            printf("FrameID = %lu, Timestamp = %f ms",
+                   img->GetFrameID(),
+                   (img->GetTimeStamp() - t_start) / 1000000.0);
+        }
+        img->Release();
+    }
+    cam->EndAcquisition();
+
+    // Release reference to the camera
+    cam->DeInit();
+    cam = nullptr;
+    cam_list.Clear();
+    system->ReleaseInstance();
+    return 0;
+}
+

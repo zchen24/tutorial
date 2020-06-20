@@ -11,6 +11,7 @@ set(PROBLEMS
   00_BasicSetup
   01_Acquisition
   02_Exposure
+  04_AcquisitionMaxFrameRate
   09_Trigger)
 
 foreach(problem ${PROBLEMS})
