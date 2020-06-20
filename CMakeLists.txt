@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 project(tuturial)
 
+option(BUILD_FLIR "Build FLIR examples" OFF)
+if(BUILD_FLIR)
+    add_subdirectory(FLIR)
+endif(BUILD_FLIR)
+
 option(BUILD_STDLIB "Build stdlib examples" ON)
 if(BUILD_STDLIB)
     add_subdirectory(stdlib)
