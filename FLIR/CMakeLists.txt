@@ -9,7 +9,8 @@ include_directories(${Spinnaker_INCLUDE_DIRS})
 
 set(PROBLEMS
   00_BasicSetup
-  01_Acquisition)
+  01_Acquisition
+  09_Trigger)
 
 foreach(problem ${PROBLEMS})
   add_executable(${problem} ${problem}.cpp)
