@@ -43,22 +43,25 @@ int main(int /*argc*/, char** /*argv*/)
 
     auto cam = cam_list.GetByIndex(0);
     cam->Init();
-    std::cout << "Fancy processing\n";
-    cam->DeInit();
+
+    cam->TriggerMode.SetValue(TriggerMode_Off);
+    cam->TriggerSource.SetValue(TriggerSource_Software);
+    cam->TriggerMode.SetValue(TriggerMode_On);
+    cam->AcquisitionMode.SetValue(AcquisitionMode_SingleFrame);
 
     printf("*** IMAGE ACQUISITION ***\n");
     cam->AcquisitionMode.SetValue(AcquisitionMode_Continuous);
-    printf("Acquisition mode set to continuous...");
+    printf("Acquisition mode set to continuous...\n");
 
     cam->BeginAcquisition();
     std::vector<int> exposure_all{1000, 2000, 3000, 4000, 5000};
     for (const auto exposure : exposure_all) {
         set_exposure(cam, exposure);
-        usleep(50000);
-        auto img = cam->GetNextImage();
+        cam->TriggerSoftware.Execute();
+        auto img = cam->GetNextImage(1000);
         if (!img->IsIncomplete()) {
             char file_name[100];
-            sprintf(file_name, "Exposure_%d.jpg", exposure);
+            sprintf(file_name, "Exposure_%d.png", exposure);
             img->Save(file_name);
         }
         img->Release();
@@ -66,8 +69,10 @@ int main(int /*argc*/, char** /*argv*/)
 
     cam->EndAcquisition();
     cam->ExposureAuto.SetValue(ExposureAuto_Continuous);
+    cam->TriggerMode.SetValue(TriggerMode_Off);
 
     // Release reference to the camera
+    cam->DeInit();
     cam = nullptr;
     cam_list.Clear();
     system->ReleaseInstance();

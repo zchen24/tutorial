@@ -27,11 +27,9 @@ int main(int /*argc*/, char** /*argv*/)
     auto cam = cam_list.GetByIndex(0);
     cam->Init();
     std::cout << "Fancy processing\n";
-    cam->DeInit();
-
     printf("*** IMAGE ACQUISITION ***\n");
     cam->AcquisitionMode.SetValue(AcquisitionMode_Continuous);
-    printf("Acquisition mode set to continuous...");
+    printf("Acquisition mode set to continuous...\n");
 
     cam->BeginAcquisition();
     auto cam_serial_number = cam->DeviceSerialNumber.ToString();
@@ -56,6 +54,7 @@ int main(int /*argc*/, char** /*argv*/)
     cam->EndAcquisition();
 
     // Release reference to the camera
+    cam->DeInit();
     cam = nullptr;
     cam_list.Clear();
     system->ReleaseInstance();

@@ -29,7 +29,7 @@ int main(int /*argc*/, char** /*argv*/)
     cam->Init();
 
     cam->AcquisitionMode.SetValue(AcquisitionMode_Continuous);
-    printf("Acquisition mode set to continuous...");
+    printf("Acquisition mode set to continuous...\n");
 
     // Turn off all auto algorithms
     cam->ExposureAuto.SetValue(ExposureAuto_Off);
@@ -46,11 +46,14 @@ int main(int /*argc*/, char** /*argv*/)
     // Start acquisition
     cam->BeginAcquisition();
     const int NUM_IMAGES = 10;
-    uint64_t t_start = -1;
+    uint64_t t_start = 0;
     for (int i = 0; i < NUM_IMAGES; i++) {
         auto img = cam->GetNextImage();
         if (!img->IsIncomplete()) {
-            printf("FrameID = %lu, Timestamp = %f ms",
+            if (t_start == 0) {
+                t_start = img->GetTimeStamp();
+            }
+            printf("FrameID = %lu, Timestamp = %f ms\n",
                    img->GetFrameID(),
                    (img->GetTimeStamp() - t_start) / 1000000.0);
         }

@@ -26,8 +26,6 @@ int main(int /*argc*/, char** /*argv*/)
 
     auto cam = cam_list.GetByIndex(0);
     cam->Init();
-    std::cout << "Fancy processing\n";
-    cam->DeInit();
 
     // turn off trigger mode
     cam->TriggerMode.SetValue(TriggerMode_Off);
@@ -47,6 +45,7 @@ int main(int /*argc*/, char** /*argv*/)
     cam->TriggerMode.SetValue(TriggerMode_Off);
 
     // Release reference to the camera
+    cam->DeInit();
     cam = nullptr;
     cam_list.Clear();
     system->ReleaseInstance();

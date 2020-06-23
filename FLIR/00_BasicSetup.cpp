@@ -16,7 +16,11 @@ int main(int /*argc*/, char** /*argv*/)
 {
     std::cout << "FLIR: Acquisition\n";
     auto system = System::GetInstance();
+    auto version = system->GetLibraryVersion();
     auto cam_list = system->GetCameras();
+
+    std::cout << "Spinnaker Version: " << version.major << "."
+              << version.minor << "." << version.type << "\n";
 
     if (cam_list.GetSize() == 0) {
         std::cerr << "No cameras found\n";
