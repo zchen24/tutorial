@@ -9,7 +9,7 @@ import cv2
 import queue
 import threading
 import time
-import copy
+
 
 def worker_record(img_queue: queue.Queue, stop_event: threading.Event):
     # wait for 1st image
