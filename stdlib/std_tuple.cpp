@@ -1,5 +1,5 @@
 /**
- * Shows how to use std::tuple
+ * Shows how to use std::tuple, heterogeneous
  *
  * Author: Zihan Chen
  * Date: 2020-01-30

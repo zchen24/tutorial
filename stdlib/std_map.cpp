@@ -21,8 +21,10 @@ int main(int, char**)
     imap[4] = 8;
     imap[5] = 10;
 
-    for (auto it = imap.begin(); it != imap.end(); it++) {
-        std::cout << "map <" << it->first << ", " << it->second << ">\n";
+    imap.erase(6);
+
+    for (auto & it : imap) {
+        std::cout << "map <" << it.first << ", " << it.second << ">\n";
     }
     std::cout << "\n";
 
