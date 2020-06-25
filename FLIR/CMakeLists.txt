@@ -15,11 +15,10 @@ set(PROBLEMS
   02_Exposure
   04_AcquisitionMaxFrameRate
   09_Trigger
+  98_TimingProfiling
   99_FLIR_CV2)
 
 foreach(problem ${PROBLEMS})
   add_executable(${problem} ${problem}.cpp)
-  target_link_libraries(${problem}
-    ${Spinnaker_LIBRARIES}
-    ${OpenCV_LIBRARIES})
+  target_link_libraries(${problem} ${Spinnaker_LIBRARIES} ${OpenCV_LIBRARIES})
 endforeach(problem)
