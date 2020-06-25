@@ -37,6 +37,11 @@ if(BUILD_PYBIND11)
     add_subdirectory(pybind11)
 endif(BUILD_PYBIND11)
 
+option(BUILD_SOEM "Build SOEM examples" OFF)
+if(BUILD_SOEM)
+    add_subdirectory(soem)
+endif(BUILD_SOEM)
+
 #add_subdirectory(raw1394)
 #add_subdirectory(json)
 #add_subdirectory(kdl)
