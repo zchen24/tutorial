@@ -1,7 +1,14 @@
+## SOEM
 This example depends on SOEM library 
 
 - clone: git clone https://github.com/OpenEtherCATsociety/SOEM.git
 - build & install
 
 
+## pysoem
+pip3 install pysoem 
+pip3 install pysoem --upgrade
+
+To use pysoem without root permission
+sudo setcap cap_net_admin,cap_net_raw=eip /usr/bin/python3.7
 
