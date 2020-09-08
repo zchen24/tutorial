@@ -1,0 +1,3 @@
+How to use:
+- copy the CMake and cmake.in files into EC-Master folder
+- Linux only. Use CMake to configure and build
