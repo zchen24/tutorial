@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 {
     QApplication app(argc, argv);    
     MyQTimer mt;
-    return app.exec();
+    return QApplication::exec();
 }
 
 

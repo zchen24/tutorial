@@ -10,10 +10,10 @@ class MyQTimer: QObject {
 
 public:
     MyQTimer();
-    virtual ~MyQTimer() = default;
+    ~MyQTimer() override = default;
 
 public slots:
-    void timer_update();
+    static void timer_update();
 
 private:
     QTimer* timer_;

@@ -46,4 +46,8 @@ endif(BUILD_SOEM)
 #add_subdirectory(json)
 #add_subdirectory(kdl)
 
+option(BUILD_QT "Build Qt examples" OFF)
+if(BUILD_QT)
+    add_subdirectory(qt)
+endif(BUILD_QT)
 
