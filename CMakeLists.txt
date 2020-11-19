@@ -7,6 +7,11 @@ if(BUILD_FLIR)
     add_subdirectory(FLIR)
 endif(BUILD_FLIR)
 
+option(BUILD_POSIX "Build POSIX examples" OFF)
+if(BUILD_POSIX)
+    add_subdirectory(posix)
+endif(BUILD_POSIX)
+
 option(BUILD_STDLIB "Build stdlib examples" ON)
 if(BUILD_STDLIB)
     add_subdirectory(stdlib)
