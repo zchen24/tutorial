@@ -1,4 +1,3 @@
-
 # general
 *~ 
 .vscode
@@ -6,6 +5,7 @@
 .project
 .metadata
 .settings
+.DS_Store
 
 # ros related
 */lib/*
