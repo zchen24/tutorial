@@ -44,6 +44,9 @@ add_executable(time_diff time_diff.cpp)
 add_executable(std_atomic std_atomic.cpp)
 target_link_libraries(std_atomic pthread)
 
+# std::bind
+add_executable(std_bind std_bind.cpp)
+
 # std::chrono
 add_executable(std_chrono std_chrono.cpp)
 
