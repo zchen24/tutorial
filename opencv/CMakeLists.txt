@@ -37,6 +37,9 @@ target_link_libraries(cvEroding ${OpenCV_LIBRARIES})
 add_executable(cvImage src/Image.cpp)
 target_link_libraries(cvImage ${OpenCV_LIBRARIES})
 
+add_executable(cvRotate src/Rotate.cpp)
+target_link_libraries(cvRotate ${OpenCV_LIBRARIES})
+
 add_executable(cvDetectMotion src/DetectMotion.cpp)
 target_link_libraries(cvDetectMotion ${OpenCV_LIBRARIES})
 
@@ -45,8 +48,8 @@ target_link_libraries(cvInputOutputArray ${OpenCV_LIBRARIES})
 
 
 # image processing
-add_executable(cvResize imgproc/Resize.cpp)
-target_link_libraries(cvResize ${OpenCV_LIBRARIES})
+#add_executable(cvResize imgproc/Resize.cpp)
+#target_link_libraries(cvResize ${OpenCV_LIBRARIES})
 
 add_executable(cvMorphology imgproc/Morphology.cpp)
 target_link_libraries(cvMorphology ${OpenCV_LIBRARIES})
@@ -69,8 +72,8 @@ target_link_libraries(cvCanny ${OpenCV_LIBRARIES})
 add_executable(cvColorSpace imgproc/ColorSpace.cpp)
 target_link_libraries(cvColorSpace ${OpenCV_LIBRARIES})
 
-add_executable(cvCCM imgproc/ColorCorrectionMatrix.cpp)
-target_link_libraries(cvCCM ${OpenCV_LIBRARIES})
+#add_executable(cvCCM imgproc/ColorCorrectionMatrix.cpp)
+#target_link_libraries(cvCCM ${OpenCV_LIBRARIES})
 
 add_executable(cvHoughLines imgproc/Houghlines.cpp)
 target_link_libraries(cvHoughLines ${OpenCV_LIBRARIES})
