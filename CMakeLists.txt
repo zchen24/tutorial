@@ -27,6 +27,11 @@ if(BUILD_CISST)
     add_subdirectory(cisst)
 endif(BUILD_CISST)
 
+option(BUILD_CPU "Build CPU examples" OFF)
+if(BUILD_CPU)
+    add_subdirectory(cpu)
+endif(BUILD_CPU)
+
 option(BUILD_EIGEN "Build Eigen examples" OFF)
 if(BUILD_EIGEN)
     add_subdirectory(eigen)

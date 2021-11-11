@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(Boost REQUIRED thread)
 include_directories(${Boost_INCLUDE_DIRS})
 
-# Set the ouptut path for the libraries and executables
+# Set the output path for the libraries and executables
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 # string example

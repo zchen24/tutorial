@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(stdlib_tutorial)
 set(CMAKE_CXX_STANDARD 11)
 
-# Set the ouptut path for the libraries and executables
+# Set the output path for the libraries and executables
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 # getopt example
