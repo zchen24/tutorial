@@ -50,6 +50,9 @@ add_executable(std_bind std_bind.cpp)
 # std::chrono
 add_executable(std_chrono std_chrono.cpp)
 
+# std::function
+add_executable(std_function std_function.cpp)
+
 # std::set
 add_executable(std_set std_set.cpp)
 
