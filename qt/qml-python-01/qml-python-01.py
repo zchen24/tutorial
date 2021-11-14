@@ -1,11 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 
+# sudo apt install python3-pyqt5.qtquick
 # Workaround for QOpenGLShaderProgram issue
 # See: drammock's comment
 # https://github.com/spyder-ide/spyder/issues/3226 
-from OpenGL import GL
+# from OpenGL import GL
 
 from PyQt5.QtCore import QUrl
 from PyQt5.QtQml import QQmlApplicationEngine

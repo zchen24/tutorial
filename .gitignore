@@ -23,6 +23,8 @@ cisstLog.txt
 .ropeproject
 *.npz
 build-*MinGW*
+*.qmlc
+*.qm
 
 
 # cython

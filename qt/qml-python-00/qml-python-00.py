@@ -5,7 +5,7 @@ import sys
 # Workaround for QOpenGLShaderProgram issue
 # See: drammock's comment
 # https://github.com/spyder-ide/spyder/issues/3226 
-from OpenGL import GL
+# from OpenGL import GL
 
 from PyQt5.QtCore import QObject,QUrl
 from PyQt5.QtWidgets import QApplication
