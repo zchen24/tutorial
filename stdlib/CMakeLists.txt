@@ -66,3 +66,5 @@ add_executable(std_tuple std_tuple.cpp)
 add_executable(std_map std_map.cpp)
 
 add_executable(class_override class_override.cpp)
+
+add_executable(strerror strerror.cpp)
