@@ -22,6 +22,7 @@ if __name__ == '__main__':
 
     # positional argument
     parser.add_argument('a1', help='position arg 1')
+    parser.add_argument('a2', nargs="?", help='position arg 2')
 
     # optional argument
     parser.add_argument('-o', '--optional', type=int,
@@ -37,6 +38,7 @@ if __name__ == '__main__':
 
     # print args
     print('positional a1 = ', args.a1)
+    print('positional a2 = ', args.a2)
     print('optional arg = ', args.optional)
     print('group arg g1 = ', args.g1)
     print('group arg g2 = ', args.g2)
