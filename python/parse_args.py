@@ -28,6 +28,9 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--optional', type=int,
                         help='optional argument')
 
+    parser.add_argument('-j', '--joints', nargs="+", help='optional arg array +')
+    parser.add_argument('-o0', nargs="*", help='optional arg array *')
+
     # conflicting group
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-g1', action='store_true', help='arg 1 in exclusive group')
@@ -40,5 +43,7 @@ if __name__ == '__main__':
     print('positional a1 = ', args.a1)
     print('positional a2 = ', args.a2)
     print('optional arg = ', args.optional)
+    print('optional joints = ', args.joints)
+    print('optional o0 = ', args.o0)
     print('group arg g1 = ', args.g1)
     print('group arg g2 = ', args.g2)
