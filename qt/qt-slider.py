@@ -15,10 +15,12 @@ class MyWidget(QWidget):
         self.setWindowTitle('QSlider Demo')
 
         self.l = QLabel()
+        # self.s = QSlider(Qt.Horizontal)
         self.s = QSlider()
+        self.s.setOrientation(Qt.Horizontal)
         self.s.setMinimum(0)
         self.s.setMaximum(100)
-        self.s.setOrientation(Qt.Horizontal)
+        # self.s.setRange(0, 100)        
         self.s.setValue(50)
         self.s.valueChanged.connect(self.callback_slider)
         self.callback_slider()
