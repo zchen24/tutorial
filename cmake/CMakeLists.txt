@@ -29,6 +29,7 @@ add_executable(cmake-main
 
 # add sub-directory
 add_subdirectory(subdir)
+add_subdirectory(sanitizer)
 
 # --------------------------------
 # Install
