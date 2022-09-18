@@ -6,6 +6,7 @@
 .metadata
 .settings
 .DS_Store
+*.xlsx
 
 # ros related
 */lib/*
