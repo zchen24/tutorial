@@ -45,6 +45,11 @@ target_link_libraries(cvDetectMotion ${OpenCV_LIBRARIES})
 add_executable(cvInputOutputArray src/InputOutputArray.cpp)
 target_link_libraries(cvInputOutputArray ${OpenCV_LIBRARIES})
 
+add_executable(cvVideoOut src/VideoOut.cpp)
+target_link_libraries(cvVideoOut ${OpenCV_LIBRARIES})
+
+add_executable(cvVideoOutMFX src/VideoOutMFX.cpp)
+target_link_libraries(cvVideoOutMFX ${OpenCV_LIBRARIES})
 
 # image processing
 #add_executable(cvResize imgproc/Resize.cpp)
