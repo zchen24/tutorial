@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(cmake-examples)
 
@@ -19,6 +26,13 @@ link_directories(${CMAKE_SOURCE_DIR}/libs)
 # set(HEADERS )
 file(GLOB HEADERS include/*.h)
 message(STATUS "headers: " ${HEADERS})
+
+cmake_host_system_information(RESULT p_name QUERY PROCESSOR_NAME)
+message(STATUS "PROCESSOR: " ${p_name})
+
+cmake_host_system_information(RESULT p_desp QUERY PROCESSOR_DESCRIPTION)
+message(STATUS "DESCRIPTION: " ${p_desp})
+
 
 # executable
 add_executable(cmake-main

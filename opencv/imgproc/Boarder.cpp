@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
   /// Create window
   std::string window_name = "copyMakeBoarder Demo";
-  cv::namedWindow( window_name, CV_WINDOW_AUTOSIZE );
+  cv::namedWindow( window_name, cv::WINDOW_AUTOSIZE );
 
   cv::Mat src, dst;
   src = cv::imread("./imgs/lena.jpg");

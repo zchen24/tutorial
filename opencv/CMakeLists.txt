@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -8,7 +8,6 @@ find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 find_package(Qt5Widgets)
-
 
 add_executable(cvCamera src/Camera.cpp)
 target_link_libraries(cvCamera ${OpenCV_LIBRARIES})
@@ -75,7 +74,7 @@ target_link_libraries(cvColorSpace ${OpenCV_LIBRARIES})
 #add_executable(cvCCM imgproc/ColorCorrectionMatrix.cpp)
 #target_link_libraries(cvCCM ${OpenCV_LIBRARIES})
 
-add_executable(cvHoughLines imgproc/Houghlines.cpp)
+add_executable(cvHoughLines imgproc/HoughLines.cpp)
 target_link_libraries(cvHoughLines ${OpenCV_LIBRARIES})
 
 add_executable(cvHoughCircles imgproc/Houghcircles.cpp)

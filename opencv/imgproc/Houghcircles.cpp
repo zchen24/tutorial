@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 //    imshow("detected circles", cimg);
 
     vector<Vec3f> circles;
-    HoughCircles(img, circles, CV_HOUGH_GRADIENT, 1, 10,
+    HoughCircles(img, circles, cv::HOUGH_GRADIENT, 1, 10,
                  100, 30, 20, 200 // change the last two parameters
                                 // (min_radius & max_radius) to detect larger circles
                  );

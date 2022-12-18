@@ -34,7 +34,7 @@ int main( int argc, char** argv )
   dst = tmp;
 
   /// Create window
-  namedWindow( window_name, CV_WINDOW_AUTOSIZE );
+  namedWindow( window_name, cv::WINDOW_AUTOSIZE);
   imshow( window_name, dst );
 
   /// Loop

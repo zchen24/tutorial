@@ -10,7 +10,7 @@ int main(int argc, char** argv)
   int delta = 0;
   int ddepth = CV_16S;
 
-  cv::namedWindow(window_name, CV_WINDOW_AUTOSIZE);
+  cv::namedWindow(window_name, cv::WINDOW_AUTOSIZE);
   src = cv::imread("./imgs/lena.jpg");
   if (!src.data) {
     std::cerr << "Error: can not read file" << std::endl;
@@ -18,7 +18,7 @@ int main(int argc, char** argv)
   }
 
   cv::GaussianBlur(src, src, cv::Size(3, 3), 0);
-  cv::cvtColor(src, src_gray, CV_RGB2GRAY);
+  cv::cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
 
   /// Generate grad_x and grad_y
   cv::Mat grad;
