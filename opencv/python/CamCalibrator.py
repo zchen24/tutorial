@@ -14,9 +14,9 @@ import cv2
 import yaml
 import numpy as np
 import matplotlib.pyplot as plt
-from qtpy.QtWidgets import *
-from qtpy.QtGui import *
-from qtpy.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 
 
 # Todo list:

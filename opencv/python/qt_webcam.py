@@ -5,9 +5,9 @@ Shows how to display a image in Qt Widget
 """
 
 import sys
-from qtpy.QtWidgets import *
-from qtpy.QtGui import *
-from qtpy.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 import cv2
 
 

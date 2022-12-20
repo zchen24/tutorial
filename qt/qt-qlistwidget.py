@@ -7,9 +7,9 @@ https://medium.com/xster-tech/pyqt-drag-images-into-list-widget-for-thumbnail-li
 """
 
 import sys
-from qtpy.QtWidgets import *
-from qtpy.QtCore import *
-from qtpy.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 from PIL import Image, ImageQt
 
 

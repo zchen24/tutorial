@@ -5,7 +5,7 @@ Shows how to use button group (exclusive)
 """
 
 import sys
-from qtpy.QtWidgets import *
+from PyQt5.QtWidgets import *
 
 
 class MyWidget(QWidget):

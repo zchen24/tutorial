@@ -8,7 +8,7 @@ Date: 2021-11-28
 """
 
 import sys
-from qtpy.QtWidgets import *
+from PyQt5.QtWidgets import *
 
 
 if __name__ == '__main__':

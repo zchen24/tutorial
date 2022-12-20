@@ -6,8 +6,8 @@ e.g. A line editor that only accepts integer value
 """
 
 import sys
-from qtpy.QtWidgets import *
-from qtpy.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 
 
 if __name__ == '__main__':

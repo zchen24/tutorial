@@ -9,8 +9,8 @@ Shows how to develop QMainWindow
 
 
 import sys
-from qtpy.QtWidgets import *
-from qtpy.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 
 
 class MyWindow(QMainWindow):

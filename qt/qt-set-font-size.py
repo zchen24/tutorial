@@ -6,7 +6,7 @@ Date: 2022-06-09
 """
 
 import sys
-from qtpy.QtWidgets import *
+from PyQt5.QtWidgets import *
 
 
 if __name__ == '__main__':

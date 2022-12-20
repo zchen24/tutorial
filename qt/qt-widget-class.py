@@ -5,7 +5,7 @@ Shows how to inherit a QWidget
 """
 
 import sys
-from qtpy.QtWidgets import *
+from PyQt5.QtWidgets import *
 
 
 class MyWidget(QWidget):

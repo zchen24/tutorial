@@ -5,7 +5,7 @@ Shows how to show to use grid layout
 """
 
 import sys
-from qtpy.QtWidgets import *
+from PyQt5.QtWidgets import *
 
 
 if __name__ == '__main__':
