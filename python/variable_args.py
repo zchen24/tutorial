@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Show how to use variable args
 1) positional variable args
