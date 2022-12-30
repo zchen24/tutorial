@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 project(stdlib_tutorial)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 # Set the output path for the libraries and executables
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
@@ -64,6 +64,9 @@ add_executable(std_tuple std_tuple.cpp)
 
 # std::map
 add_executable(std_map std_map.cpp)
+
+# std::optional
+add_executable(std_optional std_optional.cpp)
 
 add_executable(class_override class_override.cpp)
 
