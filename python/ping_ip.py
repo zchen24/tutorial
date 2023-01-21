@@ -9,15 +9,16 @@ From: https://www.delftstack.com/ Python Ping
 import platform
 import subprocess
 
-def myping(host):
-    parameter = '-n' if platform.system().lower()=='windows' else '-c'
 
+def my_ping(host):
+    """
+    my ping function
+    """
+    parameter = '-n' if platform.system().lower() == 'windows' else '-c'
     command = ['ping', parameter, '1', host]
     response = subprocess.call(command)
 
-    if response == 0:
-        return True
-    else:
-        return False
+    return response == 0
 
-print(myping("www.bing.com"))
+
+print(my_ping("www.bing.com"))
