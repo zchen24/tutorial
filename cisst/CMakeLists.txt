@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6.2)
+cmake_minimum_required(VERSION 2.6.2)
 
 project(cisst_example)
 
@@ -17,7 +17,4 @@ add_subdirectory(mtsTutorial)
 # mtsPreemprtRT
 add_subdirectory(mtsPreemptRT)
 
-# svlTutorial
-#add_subdirectory(svlTutorial)
-
-
+# svlTutorial add_subdirectory(svlTutorial)

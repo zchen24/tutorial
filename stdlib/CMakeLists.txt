@@ -8,7 +8,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 
 # getopt example
 add_executable(getopt_test getopt_test.cpp)
-#target_link_libraries(getopt_test raw1394)
+# target_link_libraries(getopt_test raw1394)
 
 # getopt_long example
 add_executable(getopt_long_test getopt_long_test.cpp)
