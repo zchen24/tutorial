@@ -68,6 +68,9 @@ add_executable(std_map std_map.cpp)
 # std::optional
 add_executable(std_optional std_optional.cpp)
 
+# std::priority_queue
+add_executable(std_priority_queue std_priority_queue.cpp)
+
 add_executable(class_override class_override.cpp)
 
 add_executable(strerror strerror.cpp)
