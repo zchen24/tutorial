@@ -6,6 +6,8 @@
 #include <iostream>
 #include <queue>
 
+using namespace std;
+
 template<typename T>
 void print(std::string_view name, T const& q)
 {
@@ -25,6 +27,27 @@ void print_queue(std::string_view name, Q q)
     std::cout << '\n';
 }
 
+struct MyStruct
+{
+    int priority{255}; // 0-255, 0 highest priority
+
+    explicit MyStruct(int priority)
+            : priority(priority) {
+    };
+    friend ostream& operator<<(ostream& os, const MyStruct& dt);
+};
+
+ostream& operator<<(ostream& os, const MyStruct& dt)
+{
+    os << "p:" << dt.priority << " ";
+    return os;
+}
+
+bool operator<(const MyStruct& p1, const MyStruct& p2)
+{
+    return p1.priority > p2.priority;
+}
+
 int main()
 {
     const auto data = {1, 8, 5, 6, 3, 4, 0, 9, 7, 2};
@@ -40,7 +63,14 @@ int main()
     std::priority_queue q2(data.begin(), data.end(), std::greater<int>());
     print_queue("q2", q2);
 
-    // Using lambda to compare elements.
+    // using struct
+    std::priority_queue<MyStruct> q4;
+    for (int n : data) {
+        q4.push(MyStruct(n));
+    }
+    print_queue("q4", q4);
+
+    // using lambda to compare elements.
     auto cmp = [](int left, int right) { return (left ^ 1) < (right ^ 1); };
     std::priority_queue<int, std::vector<int>, decltype(cmp)> q5(cmp);
     for (int n : data)
