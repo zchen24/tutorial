@@ -11,11 +11,17 @@ cap = cv2.VideoCapture('./data/flame.avi')
 win_name = 'VideoWin'
 cv2.namedWindow(win_name)
 
+i = 0
 while True:
     # read video frame-by-frame
     ret, frame = cap.read()
     if ret:
+        i += 1
         cv2.imshow(win_name, frame)
+
+        # uncomment if frame by frame play is needed
+        # print("frame idx: {}".format(i))
+        # if cv2.waitKey(0) == ord('q'):
         if cv2.waitKey(50) == ord('q'):
             break
     else:
