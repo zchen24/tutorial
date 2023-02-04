@@ -11,6 +11,7 @@ Author: Zihan Chen
 Date: Oct 23, 2021
 """
 
+import can
 
 # pcan: specifies the can bus type
 # channel: PCAN-USB
