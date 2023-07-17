@@ -19,6 +19,9 @@ add_executable(string_test string_test.cpp)
 # std::pair example
 add_executable(pair_test pair_test.cpp)
 
+# preprocessor #error directive
+add_executable(preprocessor_error preprocessor_error.cpp)
+
 # std::cout example
 add_executable(cout_test cout_test.cpp)
 
