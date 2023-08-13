@@ -10,3 +10,10 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 add_executable(pthread_stack pthread_stack.cpp)
 target_link_libraries(pthread_stack pthread)
 
+
+# sched_fifo_priority
+add_executable(sched_fifo_priority sched_fifo_priority.cpp)
+
+# sched_fifo_two_threads
+add_executable(sched_fifo_two_threads sched_fifo_two_threads.cpp)
+target_link_libraries(sched_fifo_two_threads pthread)
