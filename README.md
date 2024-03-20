@@ -1,4 +1,6 @@
 tutorial
 ========
 
-collection of tutorials code I copied while going through tutorials 
+- a collection of tutorial code studied while going through tutorials
+- some code snippets I wrote during the years 
+
