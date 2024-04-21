@@ -4,7 +4,7 @@ from __future__ import print_function
 from telnetlib import Telnet
 
 """
-Telnet client using telentlib
+Telnet client using telnetlib
 Zihan Chen 2018-02-06
 """
 
